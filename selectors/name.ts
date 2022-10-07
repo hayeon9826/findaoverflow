@@ -1,5 +1,5 @@
 import { selector } from "recoil";
-import { nameState } from "../atoms/name";
+import { nameState } from "atoms/name";
 
 export const lengthState = selector({
   key: "lengthState",
