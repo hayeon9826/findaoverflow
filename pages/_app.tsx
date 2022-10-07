@@ -7,6 +7,7 @@ import {
   QueryClientProvider,
 } from "react-query";
 import { useState } from "react";
+import { RecoilRoot } from "recoil";
 
 function MyApp({
   Component,
@@ -14,11 +15,13 @@ function MyApp({
 }: AppProps<{ dehydratedState: DehydratedState }>) {
   const [queryClient] = useState(() => new QueryClient());
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
-      </Hydrate>
-    </QueryClientProvider>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+      </QueryClientProvider>
+    </RecoilRoot>
   );
 }
 
