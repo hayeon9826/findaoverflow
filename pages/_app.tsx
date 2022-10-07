@@ -1,15 +1,17 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
 import {
   DehydratedState,
   Hydrate,
   QueryClient,
   QueryClientProvider,
-} from "react-query";
-import { useState } from "react";
-import { RecoilRoot } from "recoil";
-import { SessionProvider } from "next-auth/react";
-import { Session } from "next-auth";
+} from 'react-query';
+import { useState } from 'react';
+import { RecoilRoot } from 'recoil';
+import { SessionProvider } from 'next-auth/react';
+import { Session } from 'next-auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({
   Component,
@@ -22,6 +24,7 @@ function MyApp({
       <RecoilRoot>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={dehydratedState}>
+            <ToastContainer />
             <Component {...pageProps} />
           </Hydrate>
         </QueryClientProvider>

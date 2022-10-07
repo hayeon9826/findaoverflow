@@ -5,9 +5,10 @@
 
 <br />
 
-## 사용할 기술
+## 사용 기술
 
-- next.js firebase
+- next.js
+- firebase
 - next/auth
 - react 18
 - react-query

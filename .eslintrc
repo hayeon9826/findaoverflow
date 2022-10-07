@@ -25,7 +25,7 @@
 		"camelcase": "error",
 		"spaced-comment": "error",
 		"no-duplicate-imports": "error",
-		"prettier/prettier": "error",
+		"prettier/prettier": "warning",
 		"arrow-body-style": "off",
 		"prefer-arrow-callback": "off"
 	},

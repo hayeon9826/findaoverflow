@@ -1,12 +1,13 @@
-import type { NextPage } from "next";
-import { useSession, signIn, signOut } from "next-auth/react";
-import Head from "next/head";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { dehydrate, QueryClient } from "react-query";
-import InputElement from "components/InputElement";
-import NameLengthElement from "components/NameLengthElement";
-import { fetchPosts } from "hooks/usePosts";
+import type { NextPage } from 'next';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import Head from 'next/head';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { dehydrate, QueryClient } from 'react-query';
+import InputElement from 'components/InputElement';
+import NameLengthElement from 'components/NameLengthElement';
+import { fetchPosts } from 'hooks/usePosts';
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession();
@@ -46,6 +47,12 @@ const Home: NextPage = () => {
               >
                 구글 로그인하기
               </button>
+              <Link href="/users/login">
+                <a className="h-8 animate-bounce shadow-md">일반 로그인하기</a>
+              </Link>
+              <Link href="/users/register">
+                <a className="h-8 animate-bounce shadow-md">회원가입 하기</a>
+              </Link>
             </div>
           </>
         )}
@@ -57,7 +64,7 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by{' '}
           <Image
             src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
             alt="Finda Logo"
@@ -75,7 +82,7 @@ export default Home;
 export async function getStaticProps() {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["posts", 10], () => fetchPosts());
+  await queryClient.prefetchQuery(['posts', 10], () => fetchPosts());
 
   return {
     props: {
