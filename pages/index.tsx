@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import { dehydrate, QueryClient } from "react-query";
@@ -7,33 +8,44 @@ import NameLengthElement from "../components/NameLengthElement";
 import { fetchPosts } from "../hooks/usePosts";
 
 const Home: NextPage = () => {
+  const { data: session, status } = useSession();
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>핀다오버플로우</title>
+        <link
+          rel="icon"
+          href="https://cdn.finda.co.kr/images/favicon/finda_192.png"
+        />
       </Head>
 
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{" "}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-        <InputElement />
-        <NameLengthElement />
+        {session && session.user?.name ? (
+          <h1 className="text-6xl font-bold">
+            {session?.user?.name || status}님 환영합니다!
+          </h1>
+        ) : (
+          <>
+            <InputElement />
+            <NameLengthElement />
+          </>
+        )}
       </main>
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
         <a
           className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://finda.co.kr"
           target="_blank"
           rel="noopener noreferrer"
         >
           Powered by{" "}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          <Image
+            src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
+            alt="Finda Logo"
+            width={60}
+            height={60}
+          />
         </a>
       </footer>
     </div>
