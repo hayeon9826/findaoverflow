@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { dehydrate, QueryClient } from "react-query";
+import { fetchPosts } from "../hooks/usePosts";
 
 const Home: NextPage = () => {
   return (
@@ -84,3 +86,15 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(["posts", 10], () => fetchPosts());
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
