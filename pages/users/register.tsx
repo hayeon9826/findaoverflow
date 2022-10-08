@@ -37,31 +37,26 @@ function RegisterPage() {
             <h1 className="mb-8 text-3xl text-center">Sign up</h1>
             <form
               onSubmit={handleSubmit(async (data) => {
-                console.log(data, '######DATA');
                 try {
                   const credential = await createUserWithEmailAndPassword(
                     auth,
                     data.email,
                     data.password,
                   );
-                  console.log(credential);
                   const { user } = credential;
-                  console.log(user);
-                  // graphql / react-query 로 서버에 데이터 저장
-                  console.log('#####dbData start')
+                  // firestore 서버에 데이터 저장
                   const dbData = await addDoc(collection(db, "users"), {
+                    uid: user.uid,
                     name: data.name,
                     email: data.email,
                     createdAt: new Date(),
                   });
-                  console.log(dbData, '#####dbData end')
                   toast.success('가입을 완료하였습니다.', {
                     autoClose: 1000,
                   });
                   router.replace('/');
                 } catch (e) {
                   console.log(e);
-                  console.log('#####ERROR!');
                   toast.error('다시 시도해주세요.', {
                     autoClose: 1000,
                   });

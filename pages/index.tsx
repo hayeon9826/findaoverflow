@@ -53,6 +53,12 @@ const Home: NextPage = () => {
               <Link href="/users/register">
                 <a className="h-8 animate-bounce shadow-md">회원가입 하기</a>
               </Link>
+              <Link href="/posts/new">
+                <a className="h-8 animate-bounce shadow-md">글쓰기 (firestore)</a>
+              </Link>
+              <Link href="/posts">
+                <a className="h-8 animate-bounce shadow-md">목록 (firestore)</a>
+              </Link>
             </div>
           </>
         )}
