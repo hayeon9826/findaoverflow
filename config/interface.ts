@@ -1,3 +1,5 @@
+import React from "react";
+
 interface Timestamp {
   seconds: number;
   nanoseconds: number;
@@ -8,4 +10,15 @@ export interface postType {
   title: string;
   content: string;
   createdAt: Timestamp;
+}
+
+export interface HeaderType {
+  title?: string
+}
+
+export interface LayoutType{
+  noNav?: boolean,
+  title?: string,
+  className?: string,
+  children: React.ReactNode
 }
