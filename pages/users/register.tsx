@@ -1,10 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { useForm } from 'react-hook-form';
+import { useForm, Resolver } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { auth } from 'config/firebase';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
+
+type FormValues = {
+  email: string;
+  name: string;
+  password: string;
+  password_confirmation: string;
+};
 
 function RegisterPage() {
   const router = useRouter();
@@ -13,8 +20,8 @@ function RegisterPage() {
     handleSubmit,
     setValue,
     watch,
-    formState: { errors, isSubmitting },
-  } = useForm<any>();
+    formState: { errors },
+  } =  useForm<FormValues>();
 
   const password = useRef({});
   password.current = watch('password', '');
