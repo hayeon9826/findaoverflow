@@ -1,10 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { useForm, Resolver } from 'react-hook-form';
+import axios from "axios";
+import React, { useRef } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import { auth } from 'config/firebase';
+import { auth, db } from 'config/firebase';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
+// import { create } from 'services/user'
+import { collection, addDoc } from "firebase/firestore";
 
 type FormValues = {
   email: string;
@@ -44,7 +47,14 @@ function RegisterPage() {
                   console.log(credential);
                   const { user } = credential;
                   console.log(user);
-                  // graphql로 서버에 데이터 저장
+                  // graphql / react-query 로 서버에 데이터 저장
+                  console.log('#####dbData start')
+                  const dbData = await addDoc(collection(db, "users"), {
+                    name: data.name,
+                    email: data.email,
+                    createdAt: new Date(),
+                  });
+                  console.log(dbData, '#####dbData end')
                   toast.success('가입을 완료하였습니다.', {
                     autoClose: 1000,
                   });
