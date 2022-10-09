@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-between p-6 bg-white sm:flex-row container mx-auto flex-wrap  md:flex-row">
+    <footer className="flex flex-col items-center justify-between p-6 bg-white sm:flex-row container mx-auto flex-wrap md:flex-row">
       <a href="https://finda.co.kr" target="_blank">
         <Image
           src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
@@ -15,7 +15,7 @@ export const Footer = () => {
           height={25}
         />
       </a>
-      <p className="text-sm text-gray-400">
+      <p className="lg:text-sm text-gray-400 text-xs">
         © Copyright 2022. All Rights Reserved.
       </p>
     </footer>

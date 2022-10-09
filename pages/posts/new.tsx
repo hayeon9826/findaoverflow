@@ -71,7 +71,7 @@ const Page = () => {
                   id="title"
                   name="title"
                   placeholder="제목을 입력해주세요"
-                  className="placeholder:text-sm w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  className="placeholder:text-sm w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
               <p className="text-red-500 mb-4 mt-2 text-xs">
@@ -97,7 +97,7 @@ const Page = () => {
                   placeholder="내용을 입력해주세요."
                   id="content"
                   name="content"
-                  className="placeholder:text-sm w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                  className="placeholder:text-sm w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                 ></textarea>
               </div>
               <p className="text-red-500 mb-4 mt-2 text-xs">
@@ -105,7 +105,7 @@ const Page = () => {
               </p>
             </div>
             <div className="p-2 w-full text-center">
-              <button className="mx-auto text-white bg-indigo-500 border-0 py-2 w-full text-center focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              <button className="mx-auto text-white bg-blue-600 border-0 py-2 w-full text-center focus:outline-none hover:bg-blue-700 rounded text-lg">
                 작성
               </button>
             </div>

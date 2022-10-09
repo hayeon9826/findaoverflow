@@ -20,15 +20,13 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
+      <main className="flex w-full flex-1 flex-col items-center justify-center lg:px-20 px-8 text-center">
         {session && session.user?.name ? (
           <>
             <section className="text-gray-600 body-font max-w-3xl mt-12">
               <h2 className="font-bold text-3xl max-w-3xl flex justify-between">
                 핀다 Tech 포스트
-                <a className="text-base text-indigo-500 font-semibold">
-                  더보기
-                </a>
+                <a className="text-base text-blue-600 font-semibold">더보기</a>
               </h2>
               <div className="container pb-24 mx-auto text-left mt-12">
                 <div className="flex flex-wrap -m-4">
@@ -51,7 +49,7 @@ const Home: NextPage = () => {
                           jianbing microdosing tousled waistcoat.
                         </p>
                         <div className="flex items-center flex-wrap ">
-                          <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                          <a className="text-blue-600 inline-flex items-center md:mb-2 lg:mb-0">
                             Learn More
                             <svg
                               className="w-4 h-4 ml-2"
@@ -118,7 +116,7 @@ const Home: NextPage = () => {
                           jianbing microdosing tousled waistcoat.
                         </p>
                         <div className="flex items-center flex-wrap">
-                          <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                          <a className="text-blue-600 inline-flex items-center md:mb-2 lg:mb-0">
                             Learn More
                             <svg
                               className="w-4 h-4 ml-2"
@@ -185,7 +183,7 @@ const Home: NextPage = () => {
                           jianbing microdosing tousled waistcoat.
                         </p>
                         <div className="flex items-center flex-wrap">
-                          <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                          <a className="text-blue-600 inline-flex items-center md:mb-2 lg:mb-0">
                             Learn More
                             <svg
                               className="w-4 h-4 ml-2"
@@ -252,7 +250,7 @@ const Home: NextPage = () => {
                           jianbing microdosing tousled waistcoat.
                         </p>
                         <div className="flex items-center flex-wrap ">
-                          <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                          <a className="text-blue-600 inline-flex items-center md:mb-2 lg:mb-0">
                             Learn More
                             <svg
                               className="w-4 h-4 ml-2"
@@ -308,7 +306,7 @@ const Home: NextPage = () => {
               <h2 className="font-bold text-3xl max-w-3xl justify-between flex">
                 핀다 Tech 이야기
                 <Link href="/posts">
-                  <a className="text-base text-indigo-500 font-semibold">
+                  <a className="text-base text-blue-600 font-semibold">
                     더보기
                   </a>
                 </Link>
@@ -333,7 +331,7 @@ const Home: NextPage = () => {
                           {post?.content?.substring(0, 200)}
                         </p>
                         <Link href={`/posts/${post?.id}`}>
-                          <a className="text-indigo-500 inline-flex items-center mt-4">
+                          <a className="text-blue-600 inline-flex items-center mt-4">
                             더보기
                             <svg
                               className="w-4 h-4 ml-2"

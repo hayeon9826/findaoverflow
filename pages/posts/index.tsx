@@ -15,7 +15,7 @@ function PostsPage() {
 
   return (
     <Layout>
-      <section className="text-gray-600 body-font overflow-hidden mt-12">
+      <section className="text-gray-600 body-font overflow-hidden mt-12 px-8 lg:px-20">
         <h2 className="font-bold text-3xl max-w-3xl justify-between flex">
           핀다 Tech 이야기
         </h2>
@@ -39,7 +39,7 @@ function PostsPage() {
                     {post?.content?.substring(0, 200)}
                   </p>
                   <Link href={`/posts/${post?.id}`}>
-                    <a className="text-indigo-500 inline-flex items-center mt-4">
+                    <a className="text-blue-600 inline-flex items-center mt-4 hover:text-blue-700">
                       더보기
                       <svg
                         className="w-4 h-4 ml-2"

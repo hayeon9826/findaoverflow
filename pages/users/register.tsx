@@ -155,7 +155,7 @@ function RegisterPage() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full text-center py-3 rounded bg-indigo-500 text-white hover:bg-indigo-600 focus:outline-none my-1"
+                  className="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-blue-700 focus:outline-none my-1"
                 >
                   Create Account
                 </button>
