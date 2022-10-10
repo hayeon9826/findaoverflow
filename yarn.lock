@@ -602,6 +602,11 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@next-auth/firebase-adapter@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@next-auth/firebase-adapter/-/firebase-adapter-1.0.2.tgz#7df0b4056d598d90edf8518decedc21c584e40c3"
+  integrity sha512-jmc4jTJI0/CEH7sbXn8qaknzGcFXXH6M+IJahtJmegbkt7t1oqqSBOmfDCPaHe5gwdY5iyxdZDYDxc7EN7WB3w==
+
 "@next/env@12.3.1":
   version "12.3.1"
   resolved "https://registry.npmjs.org/@next/env/-/env-12.3.1.tgz"
