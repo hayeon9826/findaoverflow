@@ -31,7 +31,7 @@ const Page = () => {
             게시글을 작성해주세요
           </p>
         </div>
-        <div>
+        <div className="mx-8">
           <form
             onSubmit={handleSubmit(async (data) => {
               console.log(data);

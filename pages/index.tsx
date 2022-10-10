@@ -359,7 +359,7 @@ const Home: NextPage = () => {
             <section className="bg-white">
               <div className="container flex flex-col items-center px-4 py-12 mx-auto text-center">
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-700 sm:text-4xl ">
-                  Findaoverflow
+                  findaoverflow
                 </h2>
                 <h3 className="text-lg mt-2 text-gray-500">
                   로그인 후 이용하실 수 있습니다.

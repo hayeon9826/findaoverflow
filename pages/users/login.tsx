@@ -17,7 +17,7 @@ function LoginPage() {
       <Layout>
         <div className="w-full max-w-md p-6 m-auto mx-auto bg-white">
           <h1 className="text-3xl font-semibold text-center text-gray-700">
-            Findaoverflow
+            findaoverflow
           </h1>
           <form className="mt-6">
             <div>

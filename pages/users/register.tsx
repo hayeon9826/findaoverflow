@@ -36,7 +36,7 @@ function RegisterPage() {
           <div className="container mx-auto flex-1 flex flex-col items-center justify-center">
             <div className="bg-white py-8 w-full">
               <h1 className="text-3xl font-semibold text-center text-gray-700 ">
-                Findaoverflow
+                findaoverflow
               </h1>
               <form
                 className="mt-6"

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { db } from 'config/firebase';
 import { useRouter } from 'next/router';
 import { getDoc, doc } from 'firebase/firestore';
@@ -13,18 +13,17 @@ function PostsPage() {
   const { id } = router.query;
   const [post, setPost] = useState<postType | null>(null);
 
-  const getPost = async () => {
+  const getPost = useCallback(async () => {
     const docRef = doc(db, 'posts', `${id}`);
-    // const data = await getFirestoreData(docRef);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
       setPost(docSnap.data() as postType);
     } else {
-      // doc.data() will be undefined in this case
+      // doc.data() will be undefined
       console.log('No such document!');
     }
-  };
+  }, [db, id]);
 
   useEffect(() => {
     if (id) {
