@@ -33,20 +33,20 @@ function PostsPage() {
 
   return (
     <Layout className="min-h-screen px-8 lg:px-0">
-      <section className="text-gray-600 body-font overflow-hidden">
-        <div className="container py-24 mx-auto max-w-3xl">
+      <section className="body-font overflow-hidden text-gray-600">
+        <div className="container mx-auto max-w-3xl py-24">
           <div className="-my-8 divide-y-2 divide-gray-100">
-            <div className="py-8 flex flex-wrap md:flex-nowrap" key={post?.id}>
-              <div className="md:flex-grow">
-                <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
+            <div className="flex flex-wrap py-8 md:flex-nowrap" key={post?.id}>
+              <div className="md:grow">
+                <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
                   {post?.title}
                 </h2>
-                <p className="leading-relaxed text-xs">
+                <p className="text-xs leading-relaxed">
                   {dayjs
                     .unix(post?.createdAt?.seconds as number)
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
-                <p className="leading-relaxed mt-4 whitespace-pre-wrap">
+                <p className="mt-4 whitespace-pre-wrap leading-relaxed">
                   {post?.content}
                 </p>
               </div>
@@ -55,20 +55,20 @@ function PostsPage() {
           <hr className="my-8" />
           {/* comment section */}
           <section className="not-format">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-lg lg:text-2xl font-bold text-gray-900">
+            <div className="mb-6 flex items-center justify-between">
+              <h2 className="text-lg font-bold text-gray-900 lg:text-2xl">
                 Discussion (20)
               </h2>
             </div>
             <form className="mb-6">
-              <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200">
+              <div className="mb-4 rounded-lg border border-gray-200 bg-white py-2 px-4">
                 <label htmlFor="comment" className="sr-only">
                   Your comment
                 </label>
                 <textarea
                   id="comment"
                   rows={6}
-                  className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0"
+                  className="w-full border-0 px-0 text-sm text-gray-900 focus:ring-0"
                   placeholder="Write a comment..."
                   required
                 ></textarea>
@@ -76,18 +76,18 @@ function PostsPage() {
               <div className="flex flex-row-reverse">
                 <button
                   type="submit"
-                  className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-600 rounded-lg focus:ring-4 focus:ring-primary-200 hover:bg-primary-800"
+                  className="focus:ring-primary-200 hover:bg-primary-800 inline-flex items-center rounded-lg bg-blue-600 py-2.5 px-4 text-center text-xs font-medium text-white focus:ring-4"
                 >
                   Post comment
                 </button>
               </div>
             </form>
-            <article className="p-6 mb-6 text-base bg-white rounded-lg">
-              <footer className="flex justify-between items-center mb-2">
+            <article className="mb-6 rounded-lg bg-white p-6 text-base">
+              <footer className="mb-2 flex items-center justify-between">
                 <div className="flex items-center">
-                  <p className="inline-flex items-center mr-3 text-sm text-gray-900">
+                  <p className="mr-3 inline-flex items-center text-sm text-gray-900">
                     <img
-                      className="mr-2 w-6 h-6 rounded-full"
+                      className="mr-2 h-6 w-6 rounded-full"
                       src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
                       alt="Michael Gough"
                     />
@@ -98,11 +98,11 @@ function PostsPage() {
                 <button
                   id="dropdownComment1Button"
                   data-dropdown-toggle="dropdownComment1"
-                  className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                  className="inline-flex items-center rounded-lg bg-white p-2 text-center text-sm font-medium text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-50"
                   type="button"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="h-5 w-5"
                     aria-hidden="true"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -114,7 +114,7 @@ function PostsPage() {
                 </button>
                 <div
                   id="dropdownComment1"
-                  className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow"
+                  className="z-10 hidden w-36 divide-y divide-gray-100 rounded bg-white shadow"
                 >
                   <ul
                     className="py-1 text-sm text-gray-700"
@@ -153,23 +153,23 @@ function PostsPage() {
                 The knowledge of the design tools are as important as the
                 creation of the design strategy.
               </p>
-              <div className="flex items-center mt-4 space-x-4">
+              <div className="mt-4 flex items-center space-x-4">
                 <button
                   type="button"
                   className="flex items-center text-sm text-gray-500 hover:underline "
                 >
                   <svg
                     aria-hidden="true"
-                    className="mr-1 w-4 h-4"
+                    className="mr-1 h-4 w-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                     ></path>
                   </svg>
@@ -177,12 +177,12 @@ function PostsPage() {
                 </button>
               </div>
             </article>
-            <article className="p-6 mb-6 ml-6 lg:ml-12 text-base bg-white rounded-lg">
-              <footer className="flex justify-between items-center mb-2">
+            <article className="mb-6 ml-6 rounded-lg bg-white p-6 text-base lg:ml-12">
+              <footer className="mb-2 flex items-center justify-between">
                 <div className="flex items-center">
-                  <p className="inline-flex items-center mr-3 text-sm text-gray-900">
+                  <p className="mr-3 inline-flex items-center text-sm text-gray-900">
                     <img
-                      className="mr-2 w-6 h-6 rounded-full"
+                      className="mr-2 h-6 w-6 rounded-full"
                       src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                       alt="Jese Leos"
                     />
@@ -193,11 +193,11 @@ function PostsPage() {
                 <button
                   id="dropdownComment2Button"
                   data-dropdown-toggle="dropdownComment2"
-                  className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                  className="inline-flex items-center rounded-lg bg-white p-2 text-center text-sm font-medium text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-50"
                   type="button"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="h-5 w-5"
                     aria-hidden="true"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -209,7 +209,7 @@ function PostsPage() {
                 </button>
                 <div
                   id="dropdownComment2"
-                  className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow"
+                  className="z-10 hidden w-36 divide-y divide-gray-100 rounded bg-white shadow"
                 >
                   <ul
                     className="py-1 text-sm text-gray-700"
@@ -243,23 +243,23 @@ function PostsPage() {
                 </div>
               </footer>
               <p>Much appreciated! Glad you liked it ☺️</p>
-              <div className="flex items-center mt-4 space-x-4">
+              <div className="mt-4 flex items-center space-x-4">
                 <button
                   type="button"
                   className="flex items-center text-sm text-gray-500 hover:underline "
                 >
                   <svg
                     aria-hidden="true"
-                    className="mr-1 w-4 h-4"
+                    className="mr-1 h-4 w-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                     ></path>
                   </svg>
@@ -267,12 +267,12 @@ function PostsPage() {
                 </button>
               </div>
             </article>
-            <article className="p-6 mb-6 text-base bg-white border-t border-gray-200">
-              <footer className="flex justify-between items-center mb-2">
+            <article className="mb-6 border-t border-gray-200 bg-white p-6 text-base">
+              <footer className="mb-2 flex items-center justify-between">
                 <div className="flex items-center">
-                  <p className="inline-flex items-center mr-3 text-sm text-gray-900">
+                  <p className="mr-3 inline-flex items-center text-sm text-gray-900">
                     <img
-                      className="mr-2 w-6 h-6 rounded-full"
+                      className="mr-2 h-6 w-6 rounded-full"
                       src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
                       alt="Bonnie Green"
                     />
@@ -283,11 +283,11 @@ function PostsPage() {
                 <button
                   id="dropdownComment3Button"
                   data-dropdown-toggle="dropdownComment3"
-                  className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                  className="inline-flex items-center rounded-lg bg-white p-2 text-center text-sm font-medium text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-50"
                   type="button"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="h-5 w-5"
                     aria-hidden="true"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -299,7 +299,7 @@ function PostsPage() {
                 </button>
                 <div
                   id="dropdownComment3"
-                  className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow"
+                  className="z-10 hidden w-36 divide-y divide-gray-100 rounded bg-white shadow"
                 >
                   <ul
                     className="py-1 text-sm text-gray-700"
@@ -337,23 +337,23 @@ function PostsPage() {
                 the UX designer should consider while creating the design
                 strategy.
               </p>
-              <div className="flex items-center mt-4 space-x-4">
+              <div className="mt-4 flex items-center space-x-4">
                 <button
                   type="button"
                   className="flex items-center text-sm text-gray-500 hover:underline "
                 >
                   <svg
                     aria-hidden="true"
-                    className="mr-1 w-4 h-4"
+                    className="mr-1 h-4 w-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                     ></path>
                   </svg>
@@ -361,12 +361,12 @@ function PostsPage() {
                 </button>
               </div>
             </article>
-            <article className="p-6 text-base bg-white border-t border-gray-200">
-              <footer className="flex justify-between items-center mb-2">
+            <article className="border-t border-gray-200 bg-white p-6 text-base">
+              <footer className="mb-2 flex items-center justify-between">
                 <div className="flex items-center">
-                  <p className="inline-flex items-center mr-3 text-sm text-gray-900">
+                  <p className="mr-3 inline-flex items-center text-sm text-gray-900">
                     <img
-                      className="mr-2 w-6 h-6 rounded-full"
+                      className="mr-2 h-6 w-6 rounded-full"
                       src="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
                       alt="Helene Engels"
                     />
@@ -377,11 +377,11 @@ function PostsPage() {
                 <button
                   id="dropdownComment4Button"
                   data-dropdown-toggle="dropdownComment4"
-                  className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                  className="inline-flex items-center rounded-lg bg-white p-2 text-center text-sm font-medium text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-50"
                   type="button"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="h-5 w-5"
                     aria-hidden="true"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -392,7 +392,7 @@ function PostsPage() {
                 </button>
                 <div
                   id="dropdownComment4"
-                  className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow"
+                  className="z-10 hidden w-36 divide-y divide-gray-100 rounded bg-white shadow"
                 >
                   <ul
                     className="py-1 text-sm text-gray-700"
@@ -429,23 +429,23 @@ function PostsPage() {
                 Thanks for sharing this. I do came from the Backend development
                 and explored some of the tools to design my Side Projects.
               </p>
-              <div className="flex items-center mt-4 space-x-4">
+              <div className="mt-4 flex items-center space-x-4">
                 <button
                   type="button"
                   className="flex items-center text-sm text-gray-500 hover:underline "
                 >
                   <svg
                     aria-hidden="true"
-                    className="mr-1 w-4 h-4"
+                    className="mr-1 h-4 w-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                     ></path>
                   </svg>

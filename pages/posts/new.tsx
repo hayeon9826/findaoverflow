@@ -23,11 +23,11 @@ const Page = () => {
   return (
     <>
       <Layout>
-        <div className="flex flex-col text-center w-full mb-8">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+        <div className="mb-8 flex w-full flex-col text-center">
+          <h1 className="title-font mb-4 text-2xl font-medium text-gray-900 sm:text-3xl">
             게시글 작성
           </h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+          <p className="mx-auto text-base leading-relaxed lg:w-2/3">
             게시글을 작성해주세요
           </p>
         </div>
@@ -53,13 +53,13 @@ const Page = () => {
                 });
               }
             })}
-            className="flex flex-wrap -m-2"
+            className="-m-2 flex flex-wrap"
           >
-            <div className="p-2 w-full">
+            <div className="w-full p-2">
               <div className="relative">
                 <label
                   htmlFor="name"
-                  className="leading-7 text-sm text-gray-600"
+                  className="text-sm leading-7 text-gray-600"
                 >
                   제목
                 </label>
@@ -71,18 +71,18 @@ const Page = () => {
                   id="title"
                   name="title"
                   placeholder="제목을 입력해주세요"
-                  className="placeholder:text-sm w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  className="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
                 />
               </div>
-              <p className="text-red-500 mb-4 mt-2 text-xs">
+              <p className="mb-4 mt-2 text-xs text-red-500">
                 {errors.title?.message}
               </p>
             </div>
-            <div className="p-2 w-full">
+            <div className="w-full p-2">
               <div className="relative">
                 <label
                   htmlFor="message"
-                  className="leading-7 text-sm text-gray-600"
+                  className="text-sm leading-7 text-gray-600"
                 >
                   내용
                 </label>
@@ -97,15 +97,15 @@ const Page = () => {
                   placeholder="내용을 입력해주세요."
                   id="content"
                   name="content"
-                  className="placeholder:text-sm w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                  className="h-32 w-full resize-none rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
                 ></textarea>
               </div>
-              <p className="text-red-500 mb-4 mt-2 text-xs">
+              <p className="mb-4 mt-2 text-xs text-red-500">
                 {errors.content?.message}
               </p>
             </div>
-            <div className="p-2 w-full text-center">
-              <button className="mx-auto text-white bg-blue-600 border-0 py-2 w-full text-center focus:outline-none hover:bg-blue-700 rounded text-lg">
+            <div className="w-full p-2 text-center">
+              <button className="mx-auto w-full rounded border-0 bg-blue-600 py-2 text-center text-lg text-white hover:bg-blue-700 focus:outline-none">
                 작성
               </button>
             </div>

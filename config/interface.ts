@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface Timestamp {
   seconds: number;
@@ -13,12 +13,12 @@ export interface postType {
 }
 
 export interface HeaderType {
-  title?: string
+  title?: string;
 }
 
-export interface LayoutType{
-  noNav?: boolean,
-  title?: string,
-  className?: string,
-  children: React.ReactNode
+export interface LayoutType {
+  noNav?: boolean;
+  title?: string;
+  className?: string;
+  children: React.ReactNode;
 }

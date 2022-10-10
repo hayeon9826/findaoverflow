@@ -32,10 +32,10 @@ function RegisterPage() {
   return (
     <>
       <Layout>
-        <div className="w-full max-w-md p-6 m-auto mx-auto bg-whitel">
-          <div className="container mx-auto flex-1 flex flex-col items-center justify-center">
-            <div className="bg-white py-8 w-full">
-              <h1 className="text-3xl font-semibold text-center text-gray-700 ">
+        <div className="bg-whitel m-auto mx-auto w-full max-w-md p-6">
+          <div className="container mx-auto flex flex-1 flex-col items-center justify-center">
+            <div className="w-full bg-white py-8">
+              <h1 className="text-center text-3xl font-semibold text-gray-700 ">
                 findaoverflow
               </h1>
               <form
@@ -76,14 +76,14 @@ function RegisterPage() {
                   </label>
                   <input
                     type="text"
-                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
                     id="name"
                     placeholder="Name"
                     {...register('name', {
                       required: '필수 입력 사항입니다.',
                     })}
                   />
-                  <p className="text-red-500 mb-4 text-xs">
+                  <p className="mb-4 text-xs text-red-500">
                     {errors.name?.message}
                   </p>
                 </div>
@@ -96,14 +96,14 @@ function RegisterPage() {
                   </label>
                   <input
                     type="text"
-                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
                     id="email"
                     placeholder="Email"
                     {...register('email', {
                       required: '필수 입력 사항입니다',
                     })}
                   />
-                  <p className="text-red-500 mb-4 text-xs">
+                  <p className="mb-4 text-xs text-red-500">
                     {errors.email?.message}
                   </p>
                 </div>
@@ -116,7 +116,7 @@ function RegisterPage() {
                   </label>
                   <input
                     type="password"
-                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
                     id="password"
                     placeholder="Password"
                     {...register('password', {
@@ -127,7 +127,7 @@ function RegisterPage() {
                       },
                     })}
                   />
-                  <p className="text-red-500 mb-4 text-xs">
+                  <p className="mb-4 text-xs text-red-500">
                     {errors.password?.message}
                   </p>
                 </div>
@@ -140,7 +140,7 @@ function RegisterPage() {
                   </label>
                   <input
                     type="password"
-                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
                     id="password_confirmation"
                     placeholder="Confirm Password"
                     {...register('password_confirmation', {
@@ -149,29 +149,29 @@ function RegisterPage() {
                         '비밀번호가 일치하지 않습니다.',
                     })}
                   />
-                  <p className="text-red-500 mb-4 text-xs">
+                  <p className="mb-4 text-xs text-red-500">
                     {errors.password_confirmation?.message}
                   </p>
                 </div>
                 <button
                   type="submit"
-                  className="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-blue-700 focus:outline-none my-1"
+                  className="my-1 w-full rounded bg-blue-600 py-3 text-center text-white hover:bg-blue-700 focus:outline-none"
                 >
                   Create Account
                 </button>
               </form>
 
-              <div className="text-center text-sm text-grey-dark mt-4">
+              <div className="text-grey-dark mt-4 text-center text-sm">
                 By signing up, you agree to the
                 <a
-                  className="no-underline border-b border-grey-dark text-grey-dark ml-2"
+                  className="border-grey-dark text-grey-dark ml-2 border-b no-underline"
                   href="#"
                 >
                   Terms of Service
                 </a>{' '}
                 and
                 <a
-                  className="no-underline border-b border-grey-dark text-grey-dark ml-2"
+                  className="border-grey-dark text-grey-dark ml-2 border-b no-underline"
                   href="#"
                 >
                   Privacy Policy
@@ -179,10 +179,10 @@ function RegisterPage() {
               </div>
             </div>
 
-            <div className="text-gray-700 text-sm mt-6">
+            <div className="mt-6 text-sm text-gray-700">
               Already have an account?
               <Link href="/users/login">
-                <a className="no-underline border-b border-blue text-blue ml-2">
+                <a className="border-blue text-blue ml-2 border-b no-underline">
                   Log in
                 </a>
               </Link>

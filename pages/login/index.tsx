@@ -1,4 +1,4 @@
-import { signIn, useSession } from "next-auth/react";
+import { signIn, useSession } from 'next-auth/react';
 
 function LoginPage() {
   const { data: session } = useSession();

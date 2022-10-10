@@ -20,58 +20,58 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <main className="flex w-full flex-1 flex-col items-center justify-center lg:px-20 px-8 text-center">
+      <main className="flex w-full flex-1 flex-col items-center justify-center px-8 text-center lg:px-20">
         {session && session.user?.name ? (
           <>
-            <section className="text-gray-600 body-font max-w-3xl mt-12">
-              <h2 className="font-bold text-3xl max-w-3xl flex justify-between">
+            <section className="body-font mt-12 max-w-3xl text-gray-600">
+              <h2 className="flex max-w-3xl justify-between text-3xl font-bold">
                 핀다 Tech 포스트
-                <a className="text-base text-blue-600 font-semibold">더보기</a>
+                <a className="text-base font-semibold text-blue-600">더보기</a>
               </h2>
-              <div className="container pb-24 mx-auto text-left mt-12">
-                <div className="flex flex-wrap -m-4">
+              <div className="container mx-auto mt-12 pb-24 text-left">
+                <div className="-m-4 flex flex-wrap">
                   <div className="p-4 md:w-1/2">
-                    <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                    <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
                       <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
+                        className="w-full object-cover object-center md:h-36 lg:h-48"
                         src="https://dummyimage.com/720x400"
                         alt="blog"
                       />
                       <div className="p-6">
-                        <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                        <h2 className="title-font mb-1 text-xs font-medium tracking-widest text-gray-400">
                           CATEGORY
                         </h2>
-                        <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+                        <h1 className="title-font mb-3 text-lg font-medium text-gray-900">
                           The Catalyzer
                         </h1>
-                        <p className="leading-relaxed mb-3">
+                        <p className="mb-3 leading-relaxed">
                           Photo booth fam kinfolk cold-pressed sriracha leggings
                           jianbing microdosing tousled waistcoat.
                         </p>
-                        <div className="flex items-center flex-wrap ">
-                          <a className="text-blue-600 inline-flex items-center md:mb-2 lg:mb-0">
+                        <div className="flex flex-wrap items-center ">
+                          <a className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
                             Learn More
                             <svg
-                              className="w-4 h-4 ml-2"
+                              className="ml-2 h-4 w-4"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                             >
                               <path d="M5 12h14"></path>
                               <path d="M12 5l7 7-7 7"></path>
                             </svg>
                           </a>
-                          <span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                          <span className="mr-3 ml-auto inline-flex items-center border-r-2 border-gray-200 py-1 pr-3 text-sm leading-none text-gray-400 md:ml-0 lg:ml-auto">
                             <svg
-                              className="w-4 h-4 mr-1"
+                              className="mr-1 h-4 w-4"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                               viewBox="0 0 24 24"
                             >
                               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -79,14 +79,14 @@ const Home: NextPage = () => {
                             </svg>
                             1.2K
                           </span>
-                          <span className="text-gray-400 inline-flex items-center leading-none text-sm">
+                          <span className="inline-flex items-center text-sm leading-none text-gray-400">
                             <svg
-                              className="w-4 h-4 mr-1"
+                              className="mr-1 h-4 w-4"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                               viewBox="0 0 24 24"
                             >
                               <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
@@ -98,47 +98,47 @@ const Home: NextPage = () => {
                     </div>
                   </div>
                   <div className="p-4 md:w-1/2">
-                    <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                    <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
                       <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
+                        className="w-full object-cover object-center md:h-36 lg:h-48"
                         src="https://dummyimage.com/721x401"
                         alt="blog"
                       />
                       <div className="p-6">
-                        <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                        <h2 className="title-font mb-1 text-xs font-medium tracking-widest text-gray-400">
                           CATEGORY
                         </h2>
-                        <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+                        <h1 className="title-font mb-3 text-lg font-medium text-gray-900">
                           The 400 Blows
                         </h1>
-                        <p className="leading-relaxed mb-3">
+                        <p className="mb-3 leading-relaxed">
                           Photo booth fam kinfolk cold-pressed sriracha leggings
                           jianbing microdosing tousled waistcoat.
                         </p>
-                        <div className="flex items-center flex-wrap">
-                          <a className="text-blue-600 inline-flex items-center md:mb-2 lg:mb-0">
+                        <div className="flex flex-wrap items-center">
+                          <a className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
                             Learn More
                             <svg
-                              className="w-4 h-4 ml-2"
+                              className="ml-2 h-4 w-4"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                             >
                               <path d="M5 12h14"></path>
                               <path d="M12 5l7 7-7 7"></path>
                             </svg>
                           </a>
-                          <span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                          <span className="mr-3 ml-auto inline-flex items-center border-r-2 border-gray-200 py-1 pr-3 text-sm leading-none text-gray-400 md:ml-0 lg:ml-auto">
                             <svg
-                              className="w-4 h-4 mr-1"
+                              className="mr-1 h-4 w-4"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                               viewBox="0 0 24 24"
                             >
                               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -146,14 +146,14 @@ const Home: NextPage = () => {
                             </svg>
                             1.2K
                           </span>
-                          <span className="text-gray-400 inline-flex items-center leading-none text-sm">
+                          <span className="inline-flex items-center text-sm leading-none text-gray-400">
                             <svg
-                              className="w-4 h-4 mr-1"
+                              className="mr-1 h-4 w-4"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                               viewBox="0 0 24 24"
                             >
                               <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
@@ -165,47 +165,47 @@ const Home: NextPage = () => {
                     </div>
                   </div>
                   <div className="p-4 md:w-1/2">
-                    <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                    <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
                       <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
+                        className="w-full object-cover object-center md:h-36 lg:h-48"
                         src="https://dummyimage.com/721x401"
                         alt="blog"
                       />
                       <div className="p-6">
-                        <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                        <h2 className="title-font mb-1 text-xs font-medium tracking-widest text-gray-400">
                           CATEGORY
                         </h2>
-                        <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+                        <h1 className="title-font mb-3 text-lg font-medium text-gray-900">
                           The 400 Blows
                         </h1>
-                        <p className="leading-relaxed mb-3">
+                        <p className="mb-3 leading-relaxed">
                           Photo booth fam kinfolk cold-pressed sriracha leggings
                           jianbing microdosing tousled waistcoat.
                         </p>
-                        <div className="flex items-center flex-wrap">
-                          <a className="text-blue-600 inline-flex items-center md:mb-2 lg:mb-0">
+                        <div className="flex flex-wrap items-center">
+                          <a className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
                             Learn More
                             <svg
-                              className="w-4 h-4 ml-2"
+                              className="ml-2 h-4 w-4"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                             >
                               <path d="M5 12h14"></path>
                               <path d="M12 5l7 7-7 7"></path>
                             </svg>
                           </a>
-                          <span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                          <span className="mr-3 ml-auto inline-flex items-center border-r-2 border-gray-200 py-1 pr-3 text-sm leading-none text-gray-400 md:ml-0 lg:ml-auto">
                             <svg
-                              className="w-4 h-4 mr-1"
+                              className="mr-1 h-4 w-4"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                               viewBox="0 0 24 24"
                             >
                               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -213,14 +213,14 @@ const Home: NextPage = () => {
                             </svg>
                             1.2K
                           </span>
-                          <span className="text-gray-400 inline-flex items-center leading-none text-sm">
+                          <span className="inline-flex items-center text-sm leading-none text-gray-400">
                             <svg
-                              className="w-4 h-4 mr-1"
+                              className="mr-1 h-4 w-4"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                               viewBox="0 0 24 24"
                             >
                               <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
@@ -232,47 +232,47 @@ const Home: NextPage = () => {
                     </div>
                   </div>
                   <div className="p-4 md:w-1/2">
-                    <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                    <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
                       <img
-                        className="lg:h-48 md:h-36 w-full object-cover object-center"
+                        className="w-full object-cover object-center md:h-36 lg:h-48"
                         src="https://dummyimage.com/722x402"
                         alt="blog"
                       />
                       <div className="p-6">
-                        <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                        <h2 className="title-font mb-1 text-xs font-medium tracking-widest text-gray-400">
                           CATEGORY
                         </h2>
-                        <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+                        <h1 className="title-font mb-3 text-lg font-medium text-gray-900">
                           Shooting Stars
                         </h1>
-                        <p className="leading-relaxed mb-3">
+                        <p className="mb-3 leading-relaxed">
                           Photo booth fam kinfolk cold-pressed sriracha leggings
                           jianbing microdosing tousled waistcoat.
                         </p>
-                        <div className="flex items-center flex-wrap ">
-                          <a className="text-blue-600 inline-flex items-center md:mb-2 lg:mb-0">
+                        <div className="flex flex-wrap items-center ">
+                          <a className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
                             Learn More
                             <svg
-                              className="w-4 h-4 ml-2"
+                              className="ml-2 h-4 w-4"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                             >
                               <path d="M5 12h14"></path>
                               <path d="M12 5l7 7-7 7"></path>
                             </svg>
                           </a>
-                          <span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                          <span className="mr-3 ml-auto inline-flex items-center border-r-2 border-gray-200 py-1 pr-3 text-sm leading-none text-gray-400 md:ml-0 lg:ml-auto">
                             <svg
-                              className="w-4 h-4 mr-1"
+                              className="mr-1 h-4 w-4"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                               viewBox="0 0 24 24"
                             >
                               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -280,14 +280,14 @@ const Home: NextPage = () => {
                             </svg>
                             1.2K
                           </span>
-                          <span className="text-gray-400 inline-flex items-center leading-none text-sm">
+                          <span className="inline-flex items-center text-sm leading-none text-gray-400">
                             <svg
-                              className="w-4 h-4 mr-1"
+                              className="mr-1 h-4 w-4"
                               stroke="currentColor"
-                              stroke-width="2"
+                              strokeWidth="2"
                               fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                               viewBox="0 0 24 24"
                             >
                               <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
@@ -302,27 +302,27 @@ const Home: NextPage = () => {
               </div>
             </section>
 
-            <section className="text-gray-600 body-font overflow-hidden text-left mt-12">
-              <h2 className="font-bold text-3xl max-w-3xl justify-between flex">
+            <section className="body-font mt-12 overflow-hidden text-left text-gray-600">
+              <h2 className="flex max-w-3xl justify-between text-3xl font-bold">
                 핀다 Tech 이야기
                 <Link href="/posts">
-                  <a className="text-base text-blue-600 font-semibold">
+                  <a className="text-base font-semibold text-blue-600">
                     더보기
                   </a>
                 </Link>
               </h2>
-              <div className="container pb-24 mt-12 mx-auto max-w-3xl">
+              <div className="container mx-auto mt-12 max-w-3xl pb-24">
                 <div className="-my-8 divide-y-2 divide-gray-100">
                   {posts?.map((post: postType) => (
                     <div
-                      className="py-8 flex flex-wrap md:flex-nowrap"
+                      className="flex flex-wrap py-8 md:flex-nowrap"
                       key={post?.id}
                     >
-                      <div className="md:flex-grow">
-                        <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
+                      <div className="md:grow">
+                        <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
                           {post?.title?.substring(0, 100)}
                         </h2>
-                        <p className="leading-relaxed text-xs">
+                        <p className="text-xs leading-relaxed">
                           {dayjs
                             .unix(post?.createdAt?.seconds)
                             .format('YYYY-MM-DD HH:MM:ss')}
@@ -331,10 +331,10 @@ const Home: NextPage = () => {
                           {post?.content?.substring(0, 200)}
                         </p>
                         <Link href={`/posts/${post?.id}`}>
-                          <a className="text-blue-600 inline-flex items-center mt-4">
+                          <a className="mt-4 inline-flex items-center text-blue-600">
                             더보기
                             <svg
-                              className="w-4 h-4 ml-2"
+                              className="ml-2 h-4 w-4"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
                               strokeWidth="2"
@@ -357,31 +357,31 @@ const Home: NextPage = () => {
         ) : (
           <>
             <section className="bg-white">
-              <div className="container flex flex-col items-center px-4 py-12 mx-auto text-center">
+              <div className="container mx-auto flex flex-col items-center px-4 py-12 text-center">
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-700 sm:text-4xl ">
                   findaoverflow
                 </h2>
-                <h3 className="text-lg mt-2 text-gray-500">
+                <h3 className="mt-2 text-lg text-gray-500">
                   로그인 후 이용하실 수 있습니다.
                 </h3>
 
                 <div className="mt-6 sm:-mx-2">
-                  <div className="inline-flex w-full sm:w-auto sm:mx-2">
+                  <div className="inline-flex w-full sm:mx-2 sm:w-auto">
                     <Link href="/users/login">
                       <a
                         href="#"
-                        className="inline-flex items-center justify-center w-full px-5 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                        className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
                       >
                         핀다 로그인
                       </a>
                     </Link>
                   </div>
 
-                  <div className="inline-flex w-full mt-4 sm:w-auto sm:mx-2 sm:mt-0">
+                  <div className="mt-4 inline-flex w-full sm:mx-2 sm:mt-0 sm:w-auto">
                     <Link href="/users/register">
                       <a
                         href="#"
-                        className="inline-flex items-center justify-center w-full px-5 py-2 text-gray-700 transition-colors duration-150 transform bg-white border border-gray-200 rounded-lg  hover:bg-gray-100  sm:w-auto  focus:ring focus:ring-gray-200 focus:ring-opacity-80"
+                        className="inline-flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-5 py-2 text-gray-700 transition-colors duration-150 hover:bg-gray-100  focus:ring  focus:ring-gray-200  focus:ring-opacity-80 sm:w-auto"
                       >
                         회원가입
                       </a>

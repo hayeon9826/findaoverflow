@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp, getApp, getApps, FirebaseApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp, getApp, getApps, FirebaseApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 // Firebase configuration
 export let app: FirebaseApp;
@@ -14,14 +14,14 @@ const firebaseConfig = {
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
-  databaseUrl: process.env.NEXT_PUBLIC_DATABASE_URL
+  databaseUrl: process.env.NEXT_PUBLIC_DATABASE_URL,
 };
 
 // Initialize Firebase
 try {
-  app = getApp("app");
+  app = getApp('app');
 } catch (e) {
-  app = initializeApp(firebaseConfig, "app");
+  app = initializeApp(firebaseConfig, 'app');
 }
 
 export const auth = getAuth(app);

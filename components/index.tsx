@@ -7,11 +7,12 @@ import Link from 'next/link';
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col items-center justify-between p-6 bg-white sm:flex-row container mx-auto flex-wrap md:flex-row">
+    <footer className="container mx-auto flex flex-col flex-wrap items-center justify-between bg-white p-6 sm:flex-row md:flex-row">
       <a
         href="https://finda.co.kr"
         target="_blank"
-        className="flex title-font font-medium items-center text-gray-900 mb-2 md:mb-0"
+        className="title-font mb-2 flex items-center font-medium text-gray-900 md:mb-0"
+        rel="noreferrer"
       >
         <Image
           src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
@@ -23,7 +24,7 @@ export const Footer = () => {
           findaoverflow
         </span>
       </a>
-      <p className="lg:text-sm text-gray-400 text-xs">
+      <p className="text-xs text-gray-400 lg:text-sm">
         © Copyright 2022. All Rights Reserved.
       </p>
     </footer>
@@ -43,11 +44,11 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
           href="https://cdn.finda.co.kr/images/favicon/finda_192.png"
         />
       </Head>
-      <header className="text-gray-600 body-font top-0 pt-safe sticky backdrop-blur-lg">
-        <nav className="container mx-auto flex flex-wrap p-5 flex-row items-center justify-between">
-          <div className="inline-flex my-auto">
+      <header className="body-font pt-safe sticky top-0 text-gray-600 backdrop-blur-lg">
+        <nav className="container mx-auto flex flex-row flex-wrap items-center justify-between p-5">
+          <div className="my-auto inline-flex">
             <Link href="/">
-              <a className="flex title-font font-medium items-center text-gray-900">
+              <a className="title-font flex items-center font-medium text-gray-900">
                 <Image
                   src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
                   alt="Finda Logo"
@@ -63,7 +64,7 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
           <button
             data-collapse-toggle="navbar-default"
             type="button"
-            className="inline-flex items-center px-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-100"
+            className="ml-3 inline-flex items-center rounded-lg px-2 text-sm text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-100 md:hidden"
             aria-controls="navbar-default"
             aria-expanded="false"
             onClick={() => setOpen(!open)}
@@ -76,7 +77,7 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="h-6 w-6"
               >
                 <path
                   strokeLinecap="round"
@@ -89,19 +90,19 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="h-6 w-6"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                 />
               </svg>
             )}
           </button>
-          <div className="md:ml-auto flex-wrap items-center text-base justify-center hidden w-full md:block lg:block md:w-auto">
+          <div className="hidden w-full flex-wrap items-center justify-center text-base md:ml-auto md:block md:w-auto lg:block">
             {session && session.user?.name ? (
               <>
                 <Link href="/posts/new">
@@ -134,7 +135,7 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
               </>
             )}
             {session && session.user?.name && (
-              <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-sm mt-4 md:mt-0">
+              <button className="mt-4 inline-flex items-center rounded border-0 bg-gray-100 py-1 px-3 text-sm hover:bg-gray-200 focus:outline-none md:mt-0">
                 <b>{session?.user?.name || status}</b>님 환영합니다!
               </button>
             )}
@@ -142,18 +143,18 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
         </nav>
         {open && (
           <div
-            className={`md:ml-auto flex-wrap items-center text-base justify-center block w-full md:hidden lg:hidden md:w-auto absolute bg-white z-100 transition duration-500 ease-in-out ${open} ? 'translate-y-100 : 'translate-y-0`}
+            className={`z-100 absolute block w-full flex-wrap items-center justify-center bg-white text-base transition duration-500 ease-in-out md:ml-auto md:hidden md:w-auto lg:hidden ${open} ? 'translate-y-100 : 'translate-y-0`}
           >
             <ul className="w-full text-sm font-normal text-gray-500">
               {session && session.user?.name ? (
                 <>
                   <Link href="/posts/new">
-                    <li className="py-4 px-6 w-full">
+                    <li className="w-full py-4 px-6">
                       <a className="mr-5 hover:text-gray-900">포스트 작성</a>
                     </li>
                   </Link>
                   <Link href="/posts">
-                    <li className="py-4 px-6 w-full">
+                    <li className="w-full py-4 px-6">
                       <a className="mr-5 hover:text-gray-900">포스트 목록</a>
                     </li>
                   </Link>
@@ -161,7 +162,7 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
                     className="mr-5 hover:text-gray-900"
                     onClick={() => signOut()}
                   >
-                    <li className="py-4 px-6 w-full">로그아웃</li>
+                    <li className="w-full py-4 px-6">로그아웃</li>
                   </button>
                 </>
               ) : (
@@ -170,23 +171,23 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
                     className="mr-5 hover:text-gray-900"
                     onClick={() => signIn()}
                   >
-                    <li className="py-4 px-6 w-full">구글 로그인</li>
+                    <li className="w-full py-4 px-6">구글 로그인</li>
                   </button>
                   <Link href="/users/login">
-                    <li className="py-4 px-6 w-full">
+                    <li className="w-full py-4 px-6">
                       <a className="mr-5 hover:text-gray-900">로그인</a>
                     </li>
                   </Link>
                   <Link href="/users/register">
-                    <li className="py-4 px-6 w-full">
+                    <li className="w-full py-4 px-6">
                       <a className="mr-5 hover:text-gray-900">회원가입</a>
                     </li>
                   </Link>
                 </>
               )}
               {session && session.user?.name && (
-                <li className="py-4 px-6 w-full">
-                  <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-sm md:mt-0">
+                <li className="w-full py-4 px-6">
+                  <button className="inline-flex items-center rounded border-0 bg-gray-100 py-1 px-3 text-sm hover:bg-gray-200 focus:outline-none md:mt-0">
                     <b>{session?.user?.name || status}</b>님 환영합니다!
                   </button>
                 </li>
