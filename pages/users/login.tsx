@@ -97,7 +97,7 @@ function LoginPage() {
 
           <p className="mt-8 text-center text-xs font-light text-gray-400">
             {' '}
-            Don't have an account?{' '}
+            {`Don't have an account?`}
             <a href="#" className="font-medium text-gray-700  hover:underline">
               Create One
             </a>
