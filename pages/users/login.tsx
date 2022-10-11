@@ -1,7 +1,18 @@
 import { Layout } from 'components/index';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 function LoginPage() {
+  const router = useRouter();
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session) {
+      router.replace('/');
+    }
+  }, [session]);
+
   return (
     <>
       <Layout>
