@@ -7,15 +7,15 @@ export default NextAuth({
   session: {
     strategy: 'jwt',
   },
-  jwt: {
-    secret: 'secret',
-  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
+  pages: {
+    signIn: '/users/login',
+  },
   adapter: FirestoreAdapter({ db } as any),
   callbacks: {},
 });
