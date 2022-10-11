@@ -1,17 +1,7 @@
-import { useEffect } from 'react';
-import { signIn, useSession } from 'next-auth/react';
 import { Layout } from 'components/index';
-import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/react';
 
 function LoginPage() {
-  const router = useRouter();
-  const { data: session, status } = useSession();
-
-  useEffect(() => {
-    if (session) {
-      router.replace('/');
-    }
-  }, [session]);
   return (
     <>
       <Layout>
@@ -75,7 +65,7 @@ function LoginPage() {
           <div className="-mx-2 mt-6 flex items-center">
             <button
               type="button"
-              onClick={() => signIn('google')}
+              onClick={() => signIn('google', { callbackUrl: '/' })}
               className="mx-2 flex w-full items-center justify-center rounded-md bg-blue-500 px-6 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-blue-700 focus:bg-blue-400 focus:outline-none"
             >
               <svg className="mx-2 h-4 w-4 fill-current" viewBox="0 0 24 24">
