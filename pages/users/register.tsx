@@ -1,13 +1,14 @@
-import axios from 'axios';
 import React, { useRef } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import { auth, db } from 'config/firebase';
+import { db } from 'config/firebase';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { Layout } from 'components/index';
 import { collection, addDoc } from 'firebase/firestore';
+import { hash, genSaltSync } from 'bcryptjs';
+import { getUserByEmail } from 'utils/auth';
+import { signIn } from 'next-auth/react';
 
 type FormValues = {
   email: string;
@@ -21,7 +22,7 @@ function RegisterPage() {
   const {
     register,
     handleSubmit,
-    setValue,
+    reset,
     watch,
     formState: { errors },
   } = useForm<FormValues>();
@@ -32,7 +33,7 @@ function RegisterPage() {
   return (
     <>
       <Layout>
-        <div className="bg-whitel m-auto mx-auto w-full max-w-md p-6">
+        <div className="bg-white m-auto mx-auto w-full max-w-md p-6">
           <div className="container mx-auto flex flex-1 flex-col items-center justify-center">
             <div className="w-full bg-white py-8">
               <h1 className="text-center text-3xl font-semibold text-gray-700 ">
@@ -42,26 +43,47 @@ function RegisterPage() {
                 className="mt-6"
                 onSubmit={handleSubmit(async (data) => {
                   try {
-                    const credential = await createUserWithEmailAndPassword(
-                      auth,
-                      data.email,
-                      data.password,
-                    );
-                    const { user } = credential;
-                    // firestore 서버에 데이터 저장
-                    const dbData = await addDoc(collection(db, 'users'), {
-                      uid: user.uid,
-                      name: data.name,
-                      email: data.email,
-                      createdAt: new Date(),
-                    });
-                    toast.success('가입을 완료하였습니다.', {
-                      autoClose: 1000,
-                    });
-                    router.replace('/');
-                  } catch (e) {
-                    console.log(e);
-                    toast.error('다시 시도해주세요.', {
+                    // const credential = await createUserWithEmailAndPassword(
+                    //   auth,
+                    //   data.email,
+                    //   data.password,
+                    // );
+                    // const { user } = credential;
+                    const user = await getUserByEmail(data?.email);
+                    // firestore 서버에 데이터 저장. password는 해싱해서
+                    if (user) {
+                      // form reset
+                      reset();
+                      throw new Error(
+                        '해당 사용자가 존재합니다. 다른 이메일로 가입해주세요.',
+                      );
+                    }
+
+                    if (!user) {
+                      const randomUid = genSaltSync(12);
+                      const dbData = await addDoc(collection(db, 'users'), {
+                        uid: randomUid,
+                        name: data.name,
+                        email: data.email,
+                        password: await hash(data.password, 12),
+                        createdAt: new Date(),
+                      });
+                      const result = signIn('credentials', {
+                        redirect: false,
+                        email: data.email,
+                        name: data.name,
+                        id: randomUid,
+                      });
+                      console.log(result);
+                      toast.success('가입을 완료하였습니다.', {
+                        autoClose: 1000,
+                      });
+
+                      router.replace('/');
+                    }
+                  } catch (e: any) {
+                    console.log(e, '######ERROR');
+                    toast.error(`${e}`, {
                       autoClose: 1000,
                     });
                   }
@@ -83,7 +105,7 @@ function RegisterPage() {
                       required: '필수 입력 사항입니다.',
                     })}
                   />
-                  <p className="mb-4 text-xs text-red-500">
+                  <p className="mb-4 mt-2 text-xs text-red-500">
                     {errors.name?.message}
                   </p>
                 </div>
@@ -103,7 +125,7 @@ function RegisterPage() {
                       required: '필수 입력 사항입니다',
                     })}
                   />
-                  <p className="mb-4 text-xs text-red-500">
+                  <p className="mb-4 mt-2 text-xs text-red-500">
                     {errors.email?.message}
                   </p>
                 </div>
@@ -127,7 +149,7 @@ function RegisterPage() {
                       },
                     })}
                   />
-                  <p className="mb-4 text-xs text-red-500">
+                  <p className="mb-4 mt-2 text-xs text-red-500">
                     {errors.password?.message}
                   </p>
                 </div>
@@ -144,18 +166,19 @@ function RegisterPage() {
                     id="password_confirmation"
                     placeholder="Confirm Password"
                     {...register('password_confirmation', {
+                      required: '필수 입력 사항입니다.',
                       validate: (value) =>
                         value === password.current ||
                         '비밀번호가 일치하지 않습니다.',
                     })}
                   />
-                  <p className="mb-4 text-xs text-red-500">
+                  <p className="mb-4 mt-2 text-xs text-red-500">
                     {errors.password_confirmation?.message}
                   </p>
                 </div>
                 <button
                   type="submit"
-                  className="my-1 w-full rounded bg-blue-600 py-3 text-center text-white hover:bg-blue-700 focus:outline-none"
+                  className="my-1 w-full rounded bg-blue-600 py-2 text-center text-white hover:bg-blue-700 focus:outline-none"
                 >
                   Create Account
                 </button>
