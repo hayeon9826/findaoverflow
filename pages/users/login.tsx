@@ -2,10 +2,26 @@ import { Layout } from 'components/index';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { getUserByEmail, verifyPassword } from 'utils/auth';
+import { toast } from 'react-toastify';
 
 function LoginPage() {
   const router = useRouter();
   const { data: session } = useSession();
+
+  type FormValues = {
+    email: string;
+    password: string;
+  };
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm<FormValues>();
 
   useEffect(() => {
     if (session) {
@@ -20,18 +36,65 @@ function LoginPage() {
           <h1 className="text-center text-3xl font-semibold text-gray-700">
             findaoverflow
           </h1>
-          <form className="mt-6">
+          <form
+            onSubmit={handleSubmit(async (data) => {
+              console.log(data);
+              try {
+                const user = await getUserByEmail(data?.email);
+                console.log(user);
+                if (!user) {
+                  reset();
+                  throw new Error('해당 사용자가 없습니다. 다시 시도해주세요.');
+                }
+                if (user) {
+                  const checkPw = await verifyPassword(
+                    data?.password,
+                    user?.password,
+                  );
+
+                  if (!checkPw) {
+                    reset();
+                    throw new Error('비밀번호가 틀립니다. 다시 시도해주세요.');
+                  }
+                  if (checkPw) {
+                    const result = signIn('credentials', {
+                      redirect: false,
+                      email: user.email,
+                      name: user.name,
+                      id: user.uid,
+                    });
+                    console.log(result);
+                    toast.success('가입을 완료하였습니다.', {
+                      autoClose: 1000,
+                    });
+
+                    router.replace('/');
+                  }
+                }
+              } catch (e) {
+                console.log(e);
+                toast.error(`${e}`, {
+                  autoClose: 1000,
+                });
+              }
+            })}
+            className="mt-6"
+          >
             <div>
-              <label
-                htmlFor="username"
-                className="block text-sm text-gray-800 "
-              >
-                Username
+              <label htmlFor="username" className="block text-sm text-gray-800">
+                Email
               </label>
               <input
                 type="text"
+                {...register('email', {
+                  required: '필수 입력 사항입니다',
+                })}
+                placeholder="finda@findaoverflow.com"
                 className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700 focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
               />
+              <p className="mb-4 mt-2 text-xs text-red-500">
+                {errors.email?.message}
+              </p>
             </div>
 
             <div className="mt-4">
@@ -49,8 +112,18 @@ function LoginPage() {
 
               <input
                 type="password"
+                {...register('password', {
+                  required: '필수 입력 사항입니다.',
+                  minLength: {
+                    value: 8,
+                    message: '8자 이상 입력해주세요.',
+                  },
+                })}
                 className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
               />
+              <p className="mb-4 mt-2 text-xs text-red-500">
+                {errors.password?.message}
+              </p>
             </div>
 
             <div className="mt-6">

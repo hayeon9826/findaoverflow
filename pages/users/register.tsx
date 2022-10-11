@@ -82,7 +82,7 @@ function RegisterPage() {
                       router.replace('/');
                     }
                   } catch (e: any) {
-                    console.log(e, '######ERROR');
+                    console.log(e);
                     toast.error(`${e}`, {
                       autoClose: 1000,
                     });
