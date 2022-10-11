@@ -75,7 +75,7 @@ function LoginPage() {
           <div className="-mx-2 mt-6 flex items-center">
             <button
               type="button"
-              onClick={() => signIn()}
+              onClick={() => signIn('google')}
               className="mx-2 flex w-full items-center justify-center rounded-md bg-blue-500 px-6 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-blue-700 focus:bg-blue-400 focus:outline-none"
             >
               <svg className="mx-2 h-4 w-4 fill-current" viewBox="0 0 24 24">
