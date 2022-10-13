@@ -36,7 +36,6 @@ export default NextAuth({
       },
     }),
   ],
-
   secret: process.env.SECRET,
   adapter: FirestoreAdapter({ db } as any),
   callbacks: {},

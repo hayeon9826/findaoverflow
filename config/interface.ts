@@ -5,7 +5,7 @@ interface Timestamp {
   nanoseconds: number;
 }
 
-export interface postType {
+export interface boardType {
   id: string;
   title: string;
   content: string;

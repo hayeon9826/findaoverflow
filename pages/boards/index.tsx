@@ -2,15 +2,15 @@ import { db } from 'config/firebase';
 import Link from 'next/link';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useFirestoreQuery } from 'utils/index';
-import { postType } from 'config/interface';
+import { boardType } from 'config/interface';
 import { Layout } from 'components/index';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 dayjs.locale('ko');
 
-function PostsPage() {
-  const posts = useFirestoreQuery(
-    query(collection(db, 'posts'), orderBy('createdAt', 'desc')),
+function BoardsPage() {
+  const boards = useFirestoreQuery(
+    query(collection(db, 'boards'), orderBy('createdAt', 'desc')),
   );
 
   return (
@@ -21,24 +21,24 @@ function PostsPage() {
         </h2>
         <div className="container mx-auto mt-12 max-w-3xl pb-24">
           <div className="-my-8 divide-y-2 divide-gray-100">
-            {posts?.map((post: postType) => (
+            {boards?.map((board: boardType) => (
               <div
                 className="flex flex-wrap py-8 md:flex-nowrap"
-                key={post?.id}
+                key={board?.id}
               >
                 <div className="md:grow">
                   <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
-                    {post?.title?.substring(0, 100)}
+                    {board?.title?.substring(0, 100)}
                   </h2>
                   <p className="text-xs leading-relaxed">
                     {dayjs
-                      .unix(post?.createdAt?.seconds)
+                      .unix(board?.createdAt?.seconds)
                       .format('YYYY-MM-DD HH:MM:ss')}
                   </p>
                   <p className="leading-relaxed">
-                    {post?.content?.substring(0, 200)}
+                    {board?.content?.substring(0, 200)}
                   </p>
-                  <Link href={`/posts/${post?.id}`}>
+                  <Link href={`/boards/${board?.id}`}>
                     <a className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-700">
                       더보기
                       <svg
@@ -65,4 +65,4 @@ function PostsPage() {
   );
 }
 
-export default PostsPage;
+export default BoardsPage;

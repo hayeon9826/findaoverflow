@@ -64,7 +64,7 @@ function LoginPage() {
                       id: user.uid,
                     });
                     console.log(result);
-                    toast.success('가입을 완료하였습니다.', {
+                    toast.success('로그인을 완료하였습니다.', {
                       autoClose: 1000,
                     });
 

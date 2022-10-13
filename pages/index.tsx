@@ -9,13 +9,13 @@ import { fetchPosts } from 'hooks/usePosts';
 import { Layout } from 'components/index';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ko';
-import { postType } from 'config/interface';
+import { boardType } from 'config/interface';
 dayjs.locale('ko');
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession();
-  const posts = useFirestoreQuery(
-    query(collection(db, 'posts'), orderBy('createdAt', 'desc'), limit(5)),
+  const boards = useFirestoreQuery(
+    query(collection(db, 'boards'), orderBy('createdAt', 'desc'), limit(5)),
   );
 
   return (
@@ -301,55 +301,69 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </section>
-
-            <section className="body-font mt-12 overflow-hidden text-left text-gray-600">
-              <h2 className="flex max-w-3xl justify-between text-3xl font-bold">
+            <section className="container mx-auto mt-12 pb-24 text-left max-w-3xl">
+              <h2 className="flex justify-between text-3xl font-bold max-w-3xl margin-auto">
                 핀다 Tech 이야기
-                <Link href="/posts">
-                  <a className="text-base font-semibold text-blue-600">
-                    더보기
-                  </a>
-                </Link>
+                {boards && boards?.length > 0 && (
+                  <Link href="/boards">
+                    <a className="text-base font-semibold text-blue-600">
+                      더보기
+                    </a>
+                  </Link>
+                )}
               </h2>
               <div className="container mx-auto mt-12 max-w-3xl pb-24">
                 <div className="-my-8 divide-y-2 divide-gray-100">
-                  {posts?.map((post: postType) => (
-                    <div
-                      className="flex flex-wrap py-8 md:flex-nowrap"
-                      key={post?.id}
-                    >
+                  {boards && boards?.length > 0 ? (
+                    boards?.map((board: boardType) => (
+                      <div
+                        className="flex flex-wrap py-8 md:flex-nowrap "
+                        key={board?.id}
+                      >
+                        <div className="md:grow">
+                          <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
+                            {board?.title?.substring(0, 100)}
+                          </h2>
+                          <p className="text-xs leading-relaxed">
+                            {dayjs
+                              .unix(board?.createdAt?.seconds)
+                              .format('YYYY-MM-DD HH:MM:ss')}
+                          </p>
+                          <p className="leading-relaxed">
+                            {board?.content?.substring(0, 200)}
+                          </p>
+                          <Link href={`/boards/${board?.id}`}>
+                            <a className="mt-4 inline-flex items-center text-blue-600">
+                              더보기
+                              <svg
+                                className="ml-2 h-4 w-4"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                fill="none"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                              </svg>
+                            </a>
+                          </Link>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="flex flex-wrap py-8 md:flex-nowrap border rounded w-[100%] p-8 mt-20">
                       <div className="md:grow">
-                        <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
-                          {post?.title?.substring(0, 100)}
+                        <h2 className="title-font mb-2 text-xl font-medium text-gray-900">
+                          게시글이 없습니다.
                         </h2>
-                        <p className="text-xs leading-relaxed">
-                          {dayjs
-                            .unix(post?.createdAt?.seconds)
-                            .format('YYYY-MM-DD HH:MM:ss')}
-                        </p>
                         <p className="leading-relaxed">
-                          {post?.content?.substring(0, 200)}
+                          첫번째 게시글을 작성해주세요 :)
                         </p>
-                        <Link href={`/posts/${post?.id}`}>
-                          <a className="mt-4 inline-flex items-center text-blue-600">
-                            더보기
-                            <svg
-                              className="ml-2 h-4 w-4"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              fill="none"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <path d="M5 12h14"></path>
-                              <path d="M12 5l7 7-7 7"></path>
-                            </svg>
-                          </a>
-                        </Link>
                       </div>
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </section>
