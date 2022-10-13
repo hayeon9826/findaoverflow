@@ -10,5 +10,8 @@ namespace NodeJS {
     NEXT_PUBLIC_FIREBASE_APP_ID: string;
     NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: string;
     NEXT_PUBLIC_DATABASE_URL: string;
+    SECRET: string;
+    NEXTAUTH_URL: string;
+    NEXTAUTH_SECRET: string;
   }
 }
