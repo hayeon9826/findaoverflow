@@ -12,6 +12,15 @@ export interface boardType {
   createdAt: Timestamp;
 }
 
+export interface postType {
+  id: string;
+  title: string;
+  content: string;
+  createdAt: Timestamp;
+  imageUrl?: string;
+  category?: string;
+}
+
 export interface HeaderType {
   title?: string;
 }

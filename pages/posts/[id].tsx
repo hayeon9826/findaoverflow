@@ -2,23 +2,23 @@ import { useState, useEffect, useCallback } from 'react';
 import { db } from 'config/firebase';
 import { useRouter } from 'next/router';
 import { getDoc, doc } from 'firebase/firestore';
-import { boardType } from 'config/interface';
+import { postType } from 'config/interface';
 import * as dayjs from 'dayjs';
 import { Layout } from 'components/index';
 import 'dayjs/locale/ko';
 dayjs.locale('ko');
 
-function BoardPage() {
+function PostPage() {
   const router = useRouter();
   const { id } = router.query;
-  const [board, setBoard] = useState<boardType | null>(null);
+  const [post, setPost] = useState<postType | null>(null);
 
   const getBoard = useCallback(async () => {
-    const docRef = doc(db, 'boards', `${id}`);
+    const docRef = doc(db, 'posts', `${id}`);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      setBoard(docSnap.data() as boardType);
+      setPost(docSnap.data() as postType);
     } else {
       // doc.data() will be undefined
       console.log('No such document!');
@@ -36,18 +36,18 @@ function BoardPage() {
       <section className="body-font overflow-hidden text-gray-600">
         <div className="container mx-auto max-w-3xl py-24">
           <div className="-my-8 divide-y-2 divide-gray-100">
-            <div className="flex flex-wrap py-8 md:flex-nowrap" key={board?.id}>
+            <div className="flex flex-wrap py-8 md:flex-nowrap" key={post?.id}>
               <div className="md:grow">
                 <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
-                  {board?.title}
+                  {post?.title}
                 </h2>
                 <p className="text-xs leading-relaxed">
                   {dayjs
-                    .unix(board?.createdAt?.seconds as number)
+                    .unix(post?.createdAt?.seconds as number)
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
                 <p className="mt-4 whitespace-pre-wrap leading-relaxed">
-                  {board?.content}
+                  {post?.content}
                 </p>
               </div>
             </div>
@@ -460,4 +460,4 @@ function BoardPage() {
   );
 }
 
-export default BoardPage;
+export default PostPage;

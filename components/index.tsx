@@ -105,8 +105,8 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
           <div className="hidden w-full flex-wrap items-center justify-center text-base md:ml-auto md:block md:w-auto lg:block">
             {session && session.user?.name ? (
               <>
-                <Link href="/posts/new">
-                  <a className="mr-5 hover:text-gray-900">포스트 작성</a>
+                <Link href="/boards">
+                  <a className="mr-5 hover:text-gray-900">이야기 목록</a>
                 </Link>
                 <Link href="/posts">
                   <a className="mr-5 hover:text-gray-900">포스트 목록</a>
