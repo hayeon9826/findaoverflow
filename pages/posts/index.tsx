@@ -24,8 +24,6 @@ function PostsPage() {
             {posts && posts.length > 0 ? (
               posts.map((post: PostType) => (
                 <div className="p-4 md:w-1/2" key={post?.id}>
-                  // eslint-disable-next-line
-                  tailwindcss/migration-from-tailwind-2
                   <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
                     <img
                       className="w-full object-cover object-center md:h-36 lg:h-48"
