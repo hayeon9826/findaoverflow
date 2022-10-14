@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "@next-auth/firebase-adapter": "^1.0.2",
+    "@toast-ui/editor": "^3.2.1",
+    "@toast-ui/editor-plugin-color-syntax": "^3.1.0",
+    "@toast-ui/react-editor": "^3.2.2",
     "@types/bcryptjs": "^2.4.2",
     "axios": "^1.1.2",
     "bcryptjs": "^2.4.3",

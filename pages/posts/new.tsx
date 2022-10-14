@@ -1,9 +1,15 @@
+import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from 'config/firebase';
 import { Layout } from 'components/index';
+import dynamic from 'next/dynamic';
+
+const NoSsrEditor = dynamic(() => import('components/TuiEditor'), {
+  ssr: false,
+});
 
 type FormValues = {
   title: string;
@@ -17,11 +23,12 @@ const Page = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
+  const ref = useRef<any>(null);
 
   return (
     <>
-      <Layout>
-        <div className="mb-8 flex w-full flex-col text-center">
+      <Layout noFooter noNav className="h-screen w-full">
+        {/* <div className="mb-8 flex w-full flex-col text-center">
           <h1 className="title-font mb-4 text-2xl font-medium text-gray-900 sm:text-3xl">
             포스트 작성
           </h1>
@@ -108,7 +115,8 @@ const Page = () => {
               </button>
             </div>
           </form>
-        </div>
+        </div> */}
+        <NoSsrEditor content="" editorRef={ref} />
       </Layout>
     </>
   );

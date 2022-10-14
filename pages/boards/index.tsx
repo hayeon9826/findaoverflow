@@ -1,23 +1,37 @@
+import { useCallback } from 'react';
 import { db } from 'config/firebase';
 import Link from 'next/link';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useFirestoreQuery } from 'utils/index';
 import { BoardType } from 'config/interface';
 import { Layout } from 'components/index';
+import { useRouter } from 'next/router';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 dayjs.locale('ko');
 
 function BoardsPage() {
+  const router = useRouter();
   const boards = useFirestoreQuery(
     query(collection(db, 'boards'), orderBy('createdAt', 'desc')),
   );
 
+  const handleClick = useCallback(() => {
+    router.push('/boards/new');
+  }, []);
+
   return (
     <Layout className="flex min-h-screen justify-center">
-      <section className="container mx-auto mt-12 pb-24 text-left max-w-3xl">
+      <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left px-4">
         <h2 className="flex max-w-3xl justify-between text-3xl font-bold">
           핀다 Tech 이야기
+          <button
+            type="button"
+            onClick={handleClick}
+            className="mr-2 mb-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+          >
+            이야기 작성
+          </button>
         </h2>
         <div className="container mx-auto mt-12 max-w-3xl pb-24">
           <div className="-my-8 divide-y-2 divide-gray-100">
@@ -28,7 +42,7 @@ function BoardsPage() {
                   key={board?.id}
                 >
                   <div className="md:grow">
-                    <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
+                    <h2 className="mb-2 text-2xl font-medium text-gray-900">
                       {board?.title?.substring(0, 100)}
                     </h2>
                     <p className="text-xs leading-relaxed">
@@ -60,9 +74,9 @@ function BoardsPage() {
                 </div>
               ))
             ) : (
-              <div className="flex flex-wrap py-8 md:flex-nowrap border rounded w-[100%] p-8 mt-20">
+              <div className="mt-20 flex w-[100%] flex-wrap rounded border p-8 py-8 md:flex-nowrap">
                 <div className="md:grow">
-                  <h2 className="title-font mb-2 text-xl font-medium text-gray-900">
+                  <h2 className="mb-2 text-xl font-medium text-gray-900">
                     게시글이 없습니다.
                   </h2>
                   <p className="leading-relaxed">

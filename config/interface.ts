@@ -27,6 +27,7 @@ export interface HeaderType {
 
 export interface LayoutType {
   noNav?: boolean;
+  noFooter?: boolean;
   title?: string;
   className?: string;
   children: React.ReactNode;

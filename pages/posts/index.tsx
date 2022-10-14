@@ -1,4 +1,6 @@
+import { useCallback } from 'react';
 import { db } from 'config/firebase';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useFirestoreQuery } from 'utils/index';
@@ -9,15 +11,27 @@ import 'dayjs/locale/ko';
 dayjs.locale('ko');
 
 function PostsPage() {
+  const router = useRouter();
   const posts = useFirestoreQuery(
     query(collection(db, 'posts'), orderBy('createdAt', 'desc')),
   );
 
+  const handleClick = useCallback(() => {
+    router.push('/posts/new');
+  }, []);
+
   return (
     <Layout className="flex min-h-screen justify-center">
       <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left">
-        <h2 className="flex max-w-3xl justify-between text-3xl font-bold">
+        <h2 className="flex max-w-3xl justify-between text-3xl font-bold px-4">
           핀다 Tech 포스트
+          <button
+            type="button"
+            onClick={handleClick}
+            className="mr-2 mb-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+          >
+            포스트 작성
+          </button>
         </h2>
         <div className="container mx-auto mt-12 pb-24 text-left">
           <div className="-my-8 flex flex-wrap">
