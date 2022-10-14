@@ -35,7 +35,7 @@ function PostsPage() {
                         {post?.category || 'CATEGORY'}
                       </h2>
                       <h1 className="mb-3 h-8 text-lg font-medium text-gray-900">
-                        {post?.title?.substring(0, 33) || '제목이 없습니다.'}
+                        {post.title.substring(0, 33) || '제목이 없습니다.'}
                       </h1>
                       <p className="mb-3 h-20 overflow-hidden text-clip leading-relaxed">
                         {post?.content?.substring(0, 100)}
@@ -94,7 +94,7 @@ function PostsPage() {
               ))
             ) : (
               <>
-                <div className="mt-20 flex w-[100%] flex-wrap rounded border p-8 py-8 md:flex-nowrap">
+                <div className="mt-20 flex w-full flex-wrap rounded border p-8 py-8 md:flex-nowrap">
                   <div className="md:grow">
                     <h2 className="mb-2 text-xl font-medium text-gray-900">
                       게시글이 없습니다.

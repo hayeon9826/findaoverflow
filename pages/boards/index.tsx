@@ -60,7 +60,7 @@ function BoardsPage() {
                 </div>
               ))
             ) : (
-              <div className="mt-20 flex w-[100%] flex-wrap rounded border p-8 py-8 md:flex-nowrap">
+              <div className="mt-20 flex w-full flex-wrap rounded border p-8 py-8 md:flex-nowrap">
                 <div className="md:grow">
                   <h2 className="mb-2 text-xl font-medium text-gray-900">
                     게시글이 없습니다.
