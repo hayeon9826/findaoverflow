@@ -15,7 +15,7 @@ function BoardsPage() {
 
   return (
     <Layout className="flex min-h-screen justify-center">
-      <section className="container mx-auto mt-12 pb-24 text-left max-w-3xl">
+      <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left">
         <h2 className="flex max-w-3xl justify-between text-3xl font-bold">
           핀다 Tech 이야기
         </h2>
@@ -28,7 +28,7 @@ function BoardsPage() {
                   key={board?.id}
                 >
                   <div className="md:grow">
-                    <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
+                    <h2 className="mb-2 text-2xl font-medium text-gray-900">
                       {board?.title?.substring(0, 100)}
                     </h2>
                     <p className="text-xs leading-relaxed">
@@ -60,9 +60,9 @@ function BoardsPage() {
                 </div>
               ))
             ) : (
-              <div className="flex flex-wrap py-8 md:flex-nowrap border rounded w-[100%] p-8 mt-20">
+              <div className="mt-20 flex w-[100%] flex-wrap rounded border p-8 py-8 md:flex-nowrap">
                 <div className="md:grow">
-                  <h2 className="title-font mb-2 text-xl font-medium text-gray-900">
+                  <h2 className="mb-2 text-xl font-medium text-gray-900">
                     게시글이 없습니다.
                   </h2>
                   <p className="leading-relaxed">

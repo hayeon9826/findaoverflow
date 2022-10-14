@@ -22,7 +22,7 @@ const Page = () => {
     <>
       <Layout>
         <div className="mb-8 flex w-full flex-col text-center">
-          <h1 className="title-font mb-4 text-2xl font-medium text-gray-900 sm:text-3xl">
+          <h1 className="mb-4 text-2xl font-medium text-gray-900 sm:text-3xl">
             게시글 작성
           </h1>
           <p className="mx-auto text-base leading-relaxed lg:w-2/3">

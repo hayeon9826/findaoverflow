@@ -17,25 +17,28 @@ function BoardPage() {
     const docRef = doc(db, 'boards', `${id}`);
     const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-      return setBoard(docSnap.data() as BoardType);
-    }
+    return docSnap.exists() ? (docSnap.data() as BoardType) : null;
   }, [db, id]);
 
   useEffect(() => {
+    const fetchData = async () => {
+      const data = await getBoard();
+      setBoard(data);
+    };
+
     if (id) {
-      getBoard();
+      fetchData();
     }
   }, [id]);
 
   return (
     <Layout className="min-h-screen px-8 lg:px-0">
-      <section className="body-font overflow-hidden text-gray-600">
+      <section className="overflow-hidden text-gray-600">
         <div className="container mx-auto max-w-3xl py-24">
           <div className="-my-8 divide-y-2 divide-gray-100">
             <div className="flex flex-wrap py-8 md:flex-nowrap" key={board?.id}>
               <div className="md:grow">
-                <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
+                <h2 className="mb-2 text-2xl font-medium text-gray-900">
                   {board?.title}
                 </h2>
                 <p className="text-xs leading-relaxed">
