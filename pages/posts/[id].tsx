@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { db } from 'config/firebase';
 import { useRouter } from 'next/router';
 import { getDoc, doc } from 'firebase/firestore';
-import { postType } from 'config/interface';
+import { PostType } from 'config/interface';
 import * as dayjs from 'dayjs';
 import { Layout } from 'components/index';
 import 'dayjs/locale/ko';
@@ -11,23 +11,20 @@ dayjs.locale('ko');
 function PostPage() {
   const router = useRouter();
   const { id } = router.query;
-  const [post, setPost] = useState<postType | null>(null);
+  const [post, setPost] = useState<PostType | null>(null);
 
-  const getBoard = useCallback(async () => {
+  const getPost = useCallback(async () => {
     const docRef = doc(db, 'posts', `${id}`);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      setPost(docSnap.data() as postType);
-    } else {
-      // doc.data() will be undefined
-      console.log('No such document!');
+      return setPost(docSnap.data() as PostType);
     }
   }, [db, id]);
 
   useEffect(() => {
     if (id) {
-      getBoard();
+      getPost();
     }
   }, [id]);
 

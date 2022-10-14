@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { db } from 'config/firebase';
 import { useRouter } from 'next/router';
 import { getDoc, doc } from 'firebase/firestore';
-import { boardType } from 'config/interface';
+import { BoardType } from 'config/interface';
 import * as dayjs from 'dayjs';
 import { Layout } from 'components/index';
 import 'dayjs/locale/ko';
@@ -11,17 +11,14 @@ dayjs.locale('ko');
 function BoardPage() {
   const router = useRouter();
   const { id } = router.query;
-  const [board, setBoard] = useState<boardType | null>(null);
+  const [board, setBoard] = useState<BoardType | null>(null);
 
   const getBoard = useCallback(async () => {
     const docRef = doc(db, 'boards', `${id}`);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      setBoard(docSnap.data() as boardType);
-    } else {
-      // doc.data() will be undefined
-      console.log('No such document!');
+      return setBoard(docSnap.data() as BoardType);
     }
   }, [db, id]);
 

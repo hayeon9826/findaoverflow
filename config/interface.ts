@@ -5,14 +5,14 @@ interface Timestamp {
   nanoseconds: number;
 }
 
-export interface boardType {
+export interface BoardType {
   id: string;
   title: string;
   content: string;
   createdAt: Timestamp;
 }
 
-export interface postType {
+export interface PostType {
   id: string;
   title: string;
   content: string;

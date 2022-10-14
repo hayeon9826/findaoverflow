@@ -9,7 +9,7 @@ import { fetchPosts } from 'hooks/usePosts';
 import { Layout } from 'components/index';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ko';
-import { boardType, postType } from 'config/interface';
+import { BoardType, PostType } from 'config/interface';
 dayjs.locale('ko');
 
 const Home: NextPage = () => {
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left">
               <h2 className="m-auto flex max-w-3xl justify-between text-3xl font-bold">
                 핀다 Tech 포스트
-                {posts && posts?.length > 0 && (
+                {posts && posts.length > 0 && (
                   <Link href="/posts">
                     <a className="text-base font-semibold text-blue-600">
                       더보기
@@ -39,8 +39,8 @@ const Home: NextPage = () => {
               </h2>
               <div className="container mx-auto mt-12 pb-24 text-left">
                 <div className="-my-8 flex flex-wrap">
-                  {posts && posts?.length > 0 ? (
-                    posts?.map((post: postType) => (
+                  {posts && posts.length > 0 ? (
+                    posts?.map((post: PostType) => (
                       <div className="p-4 md:w-1/2" key={post?.id}>
                         <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
                           <img
@@ -53,7 +53,8 @@ const Home: NextPage = () => {
                               {post?.category || 'CATEGORY'}
                             </h2>
                             <h1 className="mb-3 h-8 text-lg font-medium text-gray-900">
-                              {post?.title?.substring(0, 33)}
+                              {post?.title?.substring(0, 33) ||
+                                '제목이 없습니다.'}
                             </h1>
                             <p className="mb-3 h-20 overflow-hidden text-clip leading-relaxed">
                               {post?.content?.substring(0, 100)}
@@ -130,7 +131,7 @@ const Home: NextPage = () => {
             <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left">
               <h2 className="m-auto flex max-w-3xl justify-between text-3xl font-bold">
                 핀다 Tech 이야기
-                {boards && boards?.length > 0 && (
+                {boards && boards.length > 0 && (
                   <Link href="/boards">
                     <a className="text-base font-semibold text-blue-600">
                       더보기
@@ -140,8 +141,8 @@ const Home: NextPage = () => {
               </h2>
               <div className="container mx-auto mt-12 max-w-3xl pb-24">
                 <div className="-my-8 divide-y-2 divide-gray-100">
-                  {boards && boards?.length > 0 ? (
-                    boards?.map((board: boardType) => (
+                  {boards && boards.length > 0 ? (
+                    boards?.map((board: BoardType) => (
                       <div
                         className="flex flex-wrap py-8 md:flex-nowrap "
                         key={board?.id}

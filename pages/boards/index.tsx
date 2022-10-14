@@ -2,7 +2,7 @@ import { db } from 'config/firebase';
 import Link from 'next/link';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useFirestoreQuery } from 'utils/index';
-import { boardType } from 'config/interface';
+import { BoardType } from 'config/interface';
 import { Layout } from 'components/index';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ko';
@@ -21,8 +21,8 @@ function BoardsPage() {
         </h2>
         <div className="container mx-auto mt-12 max-w-3xl pb-24">
           <div className="-my-8 divide-y-2 divide-gray-100">
-            {boards && boards?.length > 0 ? (
-              boards?.map((board: boardType) => (
+            {boards && boards.length > 0 ? (
+              boards?.map((board: BoardType) => (
                 <div
                   className="flex flex-wrap py-8 md:flex-nowrap"
                   key={board?.id}

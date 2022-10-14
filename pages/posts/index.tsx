@@ -2,7 +2,7 @@ import { db } from 'config/firebase';
 import Link from 'next/link';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useFirestoreQuery } from 'utils/index';
-import { postType } from 'config/interface';
+import { PostType } from 'config/interface';
 import { Layout } from 'components/index';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ko';
@@ -21,8 +21,8 @@ function PostsPage() {
         </h2>
         <div className="container mx-auto mt-12 pb-24 text-left">
           <div className="-my-8 flex flex-wrap">
-            {posts && posts?.length > 0 ? (
-              posts?.map((post: postType) => (
+            {posts && posts.length > 0 ? (
+              posts?.map((post: PostType) => (
                 <div className="p-4 md:w-1/2" key={post?.id}>
                   <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
                     <img
@@ -35,7 +35,7 @@ function PostsPage() {
                         {post?.category || 'CATEGORY'}
                       </h2>
                       <h1 className="mb-3 h-8 text-lg font-medium text-gray-900">
-                        {post?.title?.substring(0, 33)}
+                        {post?.title?.substring(0, 33) || '제목이 없습니다.'}
                       </h1>
                       <p className="mb-3 h-20 overflow-hidden text-clip leading-relaxed">
                         {post?.content?.substring(0, 100)}
