@@ -4,8 +4,10 @@ import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import { Editor } from '@toast-ui/react-editor';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
-import { useCallback } from 'react';
-import { useRouter } from 'next/router';
+import 'prismjs/themes/prism.css';
+import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
+import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
+import Prism from 'prismjs';
 
 interface Props {
   content: string;
@@ -13,7 +15,6 @@ interface Props {
 }
 
 const TuiEditor = ({ content = '', editorRef }: Props) => {
-  const router = useRouter();
   const toolbarItems = [
     ['heading', 'bold', 'italic', 'strike'],
     ['hr'],
@@ -24,25 +25,12 @@ const TuiEditor = ({ content = '', editorRef }: Props) => {
     ['scrollSync'],
   ];
 
-  const showContent = useCallback(() => {
-    const editorIns = editorRef?.current?.getInstance();
-    const contentHtml = editorIns.getHTML();
-    const contentMark = editorIns.getMarkdown();
-    console.log(contentHtml);
-    console.log(contentMark);
-  }, [editorRef]);
-
-  const handleGoBack = useCallback(() => {
-    router.back();
-  }, [router]);
-
   return (
     <>
       {editorRef && (
         <Editor
           ref={editorRef}
-          initialValue={content || '내용을 입력해주세요.'} // 글 수정 시 사용
-          // placeholder="내용을 입력해주세요."
+          initialValue={content || ' '} // 글 수정 시 사용
           initialEditType="markdown" // wysiwyg & markdown
           previewStyle={window.innerWidth > 1000 ? 'vertical' : 'tab'} // tab, vertical
           hideModeSwitch={true}
@@ -51,23 +39,10 @@ const TuiEditor = ({ content = '', editorRef }: Props) => {
           usageStatistics={false}
           toolbarItems={toolbarItems}
           useCommandShortcut={true}
-          plugins={[colorSyntax]}
+          // plugins={[colorSyntax, codeSyntaxHighlight]}
+          plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
         />
       )}
-      {/* <div className="flex h-12">
-        <button
-          className="h-full w-[40%] bg-gray-500 text-sm font-medium text-white hover:bg-gray-700"
-          onClick={handleGoBack}
-        >
-          뒤로가기
-        </button>
-        <button
-          className="h-full w-full bg-blue-600 text-sm font-medium text-white hover:bg-blue-700"
-          onClick={showContent}
-        >
-          작성하기
-        </button>
-      </div> */}
     </>
   );
 };

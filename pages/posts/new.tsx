@@ -38,40 +38,45 @@ const Page = () => {
 
   return (
     <>
-      <Layout noFooter noNav className="h-screen w-full">
+      <Layout noFooter noNav className="h-screen w-full overflow-hidden">
         <form
           onSubmit={handleSubmit(async (data) => {
             try {
               const editorIns = ref?.current?.getInstance();
-              const contentHtml = editorIns.getHTML();
               const contentMark = editorIns.getMarkdown();
-              console.log(contentHtml);
-              console.log(contentMark);
               // contentMark 길이 체크
+              if (contentMark?.length === 0) {
+                throw new Error('내용을 입력해주세요.');
+              }
 
               // add firestore
-              const dbData = await addDoc(collection(db, 'posts'), {
+              await addDoc(collection(db, 'posts'), {
                 title: data.title,
                 content: contentMark,
                 createdAt: new Date(),
               });
+
               toast.success('포스트를 작성했습니다.', {
                 autoClose: 1000,
               });
+
               router.replace('/');
             } catch (e) {
               console.log(e);
-              toast.error('다시 시도해주세요.', {
+              toast.error(`${e}` || '다시 시도해주세요.', {
                 autoClose: 1000,
               });
             }
           })}
-          className="h-screen overflow-hidden"
+          className="h-screen w-full"
         >
-          <div className="mx-2 md:mx-8 lg:mx-8 mt-4 p-2">
+          <div className="mx-2 md:mx-8 lg:mx-8 mt-4 p-2 mb-4">
             <div className="relative">
               <label htmlFor="name" className="text-sm leading-7 text-gray-600">
-                제목
+                제목{' '}
+                <span className="ml-2 text-xs text-red-500">
+                  {errors.title?.message}
+                </span>
               </label>
               <input
                 {...register('title', {
@@ -84,20 +89,17 @@ const Page = () => {
                 className="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
               />
             </div>
-            <p className="mb-4 mt-2 text-xs text-red-500">
-              {errors.title?.message}
-            </p>
           </div>
           <NoSsrEditor content="" editorRef={ref} />
-          <div className="flex h-12 w-full">
+          <div className="lg:h-13 flex h-12 w-full fixed bottom-0">
             <button
-              className="h-full w-[40%] bg-gray-500 text-sm font-medium text-white hover:bg-gray-700"
+              className="h-full w-[40%] bg-gray-500 text-sm font-medium text-white hover:bg-gray-700 md:text-base lg:text-base"
               onClick={handleGoBack}
             >
               뒤로가기
             </button>
             <button
-              className="h-full w-full bg-blue-600 text-sm font-medium text-white hover:bg-blue-700"
+              className="h-full w-full bg-blue-600 text-sm font-medium text-white hover:bg-blue-700 md:text-base lg:text-base"
               onClick={showContent}
             >
               작성하기
