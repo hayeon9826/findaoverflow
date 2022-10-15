@@ -41,11 +41,12 @@ const TuiEditor = ({ content = '', editorRef }: Props) => {
       {editorRef && (
         <Editor
           ref={editorRef}
-          initialValue={content || '내용을 입력해주세요..'} // 글 수정 시 사용
+          initialValue={content || '내용을 입력해주세요.'} // 글 수정 시 사용
+          // placeholder="내용을 입력해주세요."
           initialEditType="markdown" // wysiwyg & markdown
-          previewStyle="vertical"
+          previewStyle={window.innerWidth > 1000 ? 'vertical' : 'tab'} // tab, vertical
           hideModeSwitch={true}
-          height="calc(100% - 3rem)"
+          height="calc(100% - 10rem)"
           theme={''} // '' & 'dark'
           usageStatistics={false}
           toolbarItems={toolbarItems}
@@ -53,7 +54,7 @@ const TuiEditor = ({ content = '', editorRef }: Props) => {
           plugins={[colorSyntax]}
         />
       )}
-      <div className="flex h-12">
+      {/* <div className="flex h-12">
         <button
           className="h-full w-[40%] bg-gray-500 text-sm font-medium text-white hover:bg-gray-700"
           onClick={handleGoBack}
@@ -66,7 +67,7 @@ const TuiEditor = ({ content = '', editorRef }: Props) => {
         >
           작성하기
         </button>
-      </div>
+      </div> */}
     </>
   );
 };
