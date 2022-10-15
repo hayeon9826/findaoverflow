@@ -11,7 +11,7 @@ export const Footer = () => {
       <a
         href="https://finda.co.kr"
         target="_blank"
-        className="title-font mb-2 flex items-center font-medium text-gray-900 md:mb-0"
+        className="mb-2 flex items-center font-medium text-gray-900 md:mb-0"
         rel="noreferrer"
       >
         <Image
@@ -44,11 +44,11 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
           href="https://cdn.finda.co.kr/images/favicon/finda_192.png"
         />
       </Head>
-      <header className="body-font pt-safe sticky top-0 text-gray-600 backdrop-blur-lg">
+      <header className="sticky top-0 text-gray-600 backdrop-blur-lg">
         <nav className="container mx-auto flex flex-row flex-wrap items-center justify-between p-5">
           <div className="my-auto inline-flex">
             <Link href="/">
-              <a className="title-font flex items-center font-medium text-gray-900">
+              <a className="flex items-center font-medium text-gray-900">
                 <Image
                   src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
                   alt="Finda Logo"

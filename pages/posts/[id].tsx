@@ -23,25 +23,28 @@ function PostPage() {
     const docRef = doc(db, 'posts', `${id}`);
     const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-      return setPost(docSnap.data() as PostType);
-    }
+    return docSnap.exists() ? (docSnap.data() as PostType) : null;
   }, [db, id]);
 
   useEffect(() => {
+    const fetchData = async () => {
+      const data = await getPost();
+      setPost(data);
+    };
+
     if (id) {
-      getPost();
+      fetchData();
     }
   }, [id]);
 
   return (
     <Layout className="min-h-screen px-8 lg:px-0">
-      <section className="body-font overflow-hidden text-gray-600">
+      <section className="overflow-hidden text-gray-600">
         <div className="container mx-auto max-w-3xl py-24">
           <div className="-my-8 divide-y-2 divide-gray-100">
             <div className="flex flex-wrap py-8 md:flex-nowrap" key={post?.id}>
               <div className="md:grow">
-                <h2 className="title-font mb-2 text-2xl font-medium text-gray-900">
+                <h2 className="tmb-2 text-2xl font-medium text-gray-900">
                   {post?.title}
                 </h2>
                 <p className="text-xs leading-relaxed">
@@ -55,7 +58,7 @@ function PostPage() {
           </div>
           <hr className="my-8" />
           {/* comment section */}
-          <section className="not-format">
+          <section>
             <div className="mb-6 flex items-center justify-between">
               <h2 className="text-lg font-bold text-gray-900 lg:text-2xl">
                 Discussion (20)
