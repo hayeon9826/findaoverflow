@@ -1,8 +1,6 @@
-import { db } from 'config/firebase';
 import NextAuth from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
-import { FirestoreAdapter } from '../../../utils/firebaseAdapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
 
 export default NextAuth({
   session: {
@@ -39,6 +37,5 @@ export default NextAuth({
   pages: {
     signIn: '/users/login',
   },
-  adapter: FirestoreAdapter({ db } as any),
   callbacks: {},
 });
