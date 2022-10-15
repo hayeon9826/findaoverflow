@@ -36,7 +36,9 @@ export default NextAuth({
       },
     }),
   ],
-  secret: process.env.SECRET,
+  pages: {
+    signIn: '/users/login',
+  },
   adapter: FirestoreAdapter({ db } as any),
   callbacks: {},
 });

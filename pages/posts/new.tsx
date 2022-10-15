@@ -23,10 +23,10 @@ const Page = () => {
       <Layout>
         <div className="mb-8 flex w-full flex-col text-center">
           <h1 className="mb-4 text-2xl font-medium text-gray-900 sm:text-3xl">
-            게시글 작성
+            포스트 작성
           </h1>
           <p className="mx-auto text-base leading-relaxed lg:w-2/3">
-            게시글을 작성해주세요
+            포스트를 작성해주세요
           </p>
         </div>
         <div className="mx-8">
@@ -34,12 +34,12 @@ const Page = () => {
             onSubmit={handleSubmit(async (data) => {
               try {
                 // add firestore
-                const dbData = await addDoc(collection(db, 'boards'), {
+                const dbData = await addDoc(collection(db, 'posts'), {
                   title: data.title,
                   content: data.content,
                   createdAt: new Date(),
                 });
-                toast.success('게시글을 작성했습니다.', {
+                toast.success('포스트를 작성했습니다.', {
                   autoClose: 1000,
                 });
                 router.replace('/');
@@ -53,6 +53,7 @@ const Page = () => {
             className="-m-2 flex flex-wrap"
           >
             <div className="w-full p-2">
+              <small className="text-red-400">*추후 Editor 적용할 것</small>
               <div className="relative">
                 <label
                   htmlFor="name"
