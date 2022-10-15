@@ -44,7 +44,7 @@ function PostPage() {
           <div className="-my-8 divide-y-2 divide-gray-100">
             <div className="flex flex-wrap py-8 md:flex-nowrap" key={post?.id}>
               <div className="md:grow">
-                <h2 className="tmb-2 text-2xl font-medium text-gray-900">
+                <h2 className="mb-2 text-2xl font-medium text-gray-900">
                   {post?.title}
                 </h2>
                 <p className="text-xs leading-relaxed">
@@ -52,7 +52,9 @@ function PostPage() {
                     .unix(post?.createdAt?.seconds as number)
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
-                {post?.content && <NoSsrViewer content={post?.content} />}
+                <div className="mt-8">
+                  {post?.content && <NoSsrViewer content={post?.content} />}
+                </div>
               </div>
             </div>
           </div>

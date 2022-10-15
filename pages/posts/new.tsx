@@ -24,14 +24,6 @@ const Page = () => {
   } = useForm<FormValues>();
   const ref = useRef<any>(null);
 
-  const showContent = useCallback(() => {
-    const editorIns = ref?.current?.getInstance();
-    const contentHtml = editorIns.getHTML();
-    const contentMark = editorIns.getMarkdown();
-    console.log(contentHtml);
-    console.log(contentMark);
-  }, [ref]);
-
   const handleGoBack = useCallback(() => {
     router.back();
   }, [router]);
@@ -70,7 +62,7 @@ const Page = () => {
           })}
           className="h-screen w-full"
         >
-          <div className="mx-2 md:mx-8 lg:mx-8 mt-4 p-2 mb-4">
+          <div className="mx-2 my-4 p-2 md:mx-8 lg:mx-8">
             <div className="relative">
               <label htmlFor="name" className="text-sm leading-7 text-gray-600">
                 제목{' '}
@@ -86,12 +78,13 @@ const Page = () => {
                 id="title"
                 name="title"
                 placeholder="제목을 입력해주세요"
+                // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
                 className="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
               />
             </div>
           </div>
           <NoSsrEditor content="" editorRef={ref} />
-          <div className="lg:h-13 flex h-12 w-full fixed bottom-0">
+          <div className="fixed bottom-0 flex h-12 w-full lg:h-14">
             <button
               className="h-full w-[40%] bg-gray-500 text-sm font-medium text-white hover:bg-gray-700 md:text-base lg:text-base"
               onClick={handleGoBack}
@@ -100,7 +93,7 @@ const Page = () => {
             </button>
             <button
               className="h-full w-full bg-blue-600 text-sm font-medium text-white hover:bg-blue-700 md:text-base lg:text-base"
-              onClick={showContent}
+              type="submit"
             >
               작성하기
             </button>
