@@ -12,7 +12,7 @@ import {
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type Data = {
-  posts: PostType[];
+  posts?: PostType[];
 };
 
 const DEFAULT_POSTS_FETCH_COUNT = 20;
