@@ -39,7 +39,7 @@ export default function mypage() {
                                     tab.current
                                       ? 'border-blue-500 text-blue-600'
                                       : 'border-transparent  hover:border-gray-300 hover:text-gray-700',
-                                    'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm',
+                                    'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-base',
                                   )}
                                 >
                                   {tab.name}
@@ -49,8 +49,6 @@ export default function mypage() {
                           </nav>
                         </div>
                       </div>
-
-                      {/* Description list with inline editing */}
                       <div className="mt-10 divide-y divide-gray-200">
                         <div className="space-y-1">
                           <h3 className="text-lg font-medium leading-6">
@@ -98,7 +96,7 @@ export default function mypage() {
                                   <button
                                     type="button"
                                     onClick={() =>
-                                      toast.error('서비스 준비중입니다.', {
+                                      toast.warning('서비스 준비중입니다.', {
                                         autoClose: 1000,
                                       })
                                     }
@@ -139,7 +137,7 @@ export default function mypage() {
                                 로그아웃
                               </dt>
                               <dd className="mt-1 flex text-sm sm:col-span-2 sm:mt-0">
-                                <span className="grow"></span>
+                                <span className="grow">우측 링크 클릭</span>
                                 <span className="ml-4 shrink-0">
                                   <button
                                     type="button"
@@ -156,12 +154,14 @@ export default function mypage() {
                                 계정 탈퇴
                               </dt>
                               <dd className="mt-1 flex text-sm sm:col-span-2 sm:mt-0">
-                                <span className="grow"></span>
+                                <span className="grow">
+                                  계정 탈퇴 시 복구 불가
+                                </span>
                                 <span className="ml-4 shrink-0">
                                   <button
                                     type="button"
                                     onClick={() =>
-                                      toast.error('서비스 준비중입니다.', {
+                                      toast.warning('서비스 준비중입니다.', {
                                         autoClose: 1000,
                                       })
                                     }
