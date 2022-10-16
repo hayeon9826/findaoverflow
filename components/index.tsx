@@ -135,9 +135,11 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
               </>
             )}
             {session && session.user?.name && (
-              <button className="mt-4 inline-flex items-center rounded border-0 bg-gray-100 py-1 px-3 text-sm hover:bg-gray-200 focus:outline-none md:mt-0">
-                <b>{session?.user?.name || status}</b>님 환영합니다!
-              </button>
+              <Link href="/users/mypage">
+                <button className="mt-4 inline-flex items-center rounded border-0 bg-gray-100 py-1 px-3 text-sm hover:bg-gray-200 focus:outline-none md:mt-0">
+                  <b>{session?.user?.name || status}</b>님 환영합니다!
+                </button>
+              </Link>
             )}
           </div>
         </nav>
