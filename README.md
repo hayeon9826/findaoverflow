@@ -20,16 +20,17 @@
 ## 구현할 기능들
 
 - [x] 로그인, 회원가입 (next/auth)
-- [ ] 로그인, 회원가입 JWT 설정
-- [ ] 보안 (next/auth 로그인시 접근 가능하게)
-- [ ] 포스트 글쓰기 / 수정 / 삭제
-- [ ] 포스트 리스트 / 보기
-- [ ] 이야기 글쓰기 / 수정 / 삭제
-- [ ] 이야기 리스트 / 보기
+- [x] 로그인, 회원가입 JWT 설정
+- [x] 보안 (next/auth 로그인시 접근 가능하게)
+- [ ] 포스트 글쓰기 / 수정 / 삭제 (사용자 추가 + 사용자만 수정 / 삭제 가능하게)
+- [x] 포스트 리스트 / 보기
+- [ ] 이야기 글쓰기 / 수정 / 삭제 (사용자 추가 + 사용자만 수정 / 삭제 가능하게)
+- [x] 이야기 리스트 / 보기
 - [ ] 포스트 & 이야기 가져올 때 react-query 적용
 - [ ] SSG 적용
 - [ ] 포스트 & 이야기 infinite scroll
-- [ ] 포스트 에디터 ([https://ui.toast.com/tui-editor](https://ui.toast.com/tui-editor))
+- [x] 포스트 에디터 ([https://ui.toast.com/tui-editor](https://ui.toast.com/tui-editor))
+- [ ] 포스트 에디터 이미지 업로드
 - [ ] 이미지 업로드 (firebase Cloud Storage)
 - [ ] 댓글 / 대댓글
 - [ ] 좋아요

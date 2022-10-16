@@ -23,11 +23,11 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-8 text-center lg:px-20">
+      <main className="flex w-full flex-1 flex-col items-center justify-center text-center">
         {session && session.user?.name ? (
           <>
             <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left">
-              <h2 className="m-auto flex max-w-3xl justify-between text-3xl font-bold">
+              <h2 className="m-auto flex max-w-3xl justify-between px-4 text-3xl font-bold">
                 핀다 Tech 포스트
                 {posts && posts.length > 0 && (
                   <Link href="/posts">
@@ -128,7 +128,7 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </section>
-            <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left">
+            <section className="container mx-auto mt-12 max-w-3xl px-4 pb-24 text-left">
               <h2 className="m-auto flex max-w-3xl justify-between text-3xl font-bold">
                 핀다 Tech 이야기
                 {boards && boards.length > 0 && (
@@ -197,7 +197,7 @@ const Home: NextPage = () => {
           </>
         ) : (
           <>
-            <section className="bg-white">
+            <section className="bg-white px-4">
               <div className="container mx-auto flex flex-col items-center px-4 py-12 text-center">
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-700 sm:text-4xl ">
                   findaoverflow
