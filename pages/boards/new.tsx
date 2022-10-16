@@ -20,7 +20,7 @@ const Page = () => {
 
   return (
     <>
-      <Layout>
+      <Layout className="flex min-h-screen flex-col items-center justify-center">
         <div className="mb-8 flex w-full flex-col text-center">
           <h1 className="mb-4 text-2xl font-medium text-gray-900 sm:text-3xl">
             게시글 작성
@@ -29,7 +29,7 @@ const Page = () => {
             게시글을 작성해주세요
           </p>
         </div>
-        <div className="mx-8">
+        <div className="lg:w-1/3 mx-8">
           <form
             onSubmit={handleSubmit(async (data) => {
               try {
@@ -94,7 +94,7 @@ const Page = () => {
                   placeholder="내용을 입력해주세요."
                   id="content"
                   name="content"
-                  className="h-32 w-full resize-none rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
+                  className="h-64 w-full resize-none rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
                 ></textarea>
               </div>
               <p className="mb-4 mt-2 text-xs text-red-500">
