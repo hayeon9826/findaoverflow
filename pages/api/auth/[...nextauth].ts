@@ -5,6 +5,8 @@ import GoogleProvider from 'next-auth/providers/google';
 export default NextAuth({
   session: {
     strategy: 'jwt',
+    maxAge: 60 * 60 * 2,
+    updateAge: 60 * 60,
   },
   providers: [
     GoogleProvider({
@@ -37,5 +39,21 @@ export default NextAuth({
   pages: {
     signIn: '/users/login',
   },
-  callbacks: {},
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.name = user.name;
+        token.email = user.email;
+        token.picture = user.image;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.id = token.sub;
+      session.user.name = token.name || '';
+      session.user.image = token.picture || '';
+      session.user.email = token.email || '';
+      return session;
+    },
+  },
 });

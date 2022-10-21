@@ -103,7 +103,7 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
             )}
           </button>
           <div className="hidden w-full flex-wrap items-center justify-center text-base md:ml-auto md:block md:w-auto lg:block">
-            {session && session.user?.name ? (
+            {session && session.user?.id ? (
               <>
                 <Link href="/boards">
                   <a className="mr-5 hover:text-gray-900">이야기 목록</a>
