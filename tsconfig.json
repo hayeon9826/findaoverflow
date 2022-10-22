@@ -16,38 +16,25 @@
     "incremental": true,
     "rootDirs": ["."],
     "paths": {
-      "pages/*": [
-        "./pages/*"
-      ],
-      "components/*": [
-        "./components/*"
-      ],
-      "hooks/*": [
-        "./hooks/*"
-      ],
-      "selectors/*": [
-        "./selectors/*"
-      ],
-      "types/*": [
-        "./types/*"
-      ],
-      "atoms/*": [
-        "./atoms/*"
-      ],
-      "utils/*": [
-        "./utils/*"
-      ],
-      "config/*": [
-        "./config/*"
-      ],
-      "src/*": [
-        "./src/*"
-      ],
-      "interface/*": [
-        "./src/interface/*"
-      ],
+      "pages/*": ["./pages/*"],
+      "components/*": ["./components/*"],
+      "hooks/*": ["./hooks/*"],
+      "selectors/*": ["./selectors/*"],
+      "types/*": ["./types/*"],
+      "atoms/*": ["./atoms/*"],
+      "utils/*": ["./utils/*"],
+      "config/*": ["./config/*"],
+      "src/*": ["./src/*"],
+      "interface/*": ["./src/interface/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/index.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "utils/index.js",
+    "components/LexicalEditor.js",
+    "components/plugins/AutoLinkPlugins.js"
+  ],
   "exclude": ["node_modules"]
 }

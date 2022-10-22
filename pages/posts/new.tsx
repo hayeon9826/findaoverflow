@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -7,7 +7,7 @@ import { db } from 'config/firebase';
 import { Layout } from 'components/index';
 import dynamic from 'next/dynamic';
 
-const NoSsrEditor = dynamic(() => import('components/TuiEditor'), {
+const NoSsrEditor = dynamic(() => import('components/LexicalEditor.js'), {
   ssr: false,
 });
 
@@ -28,23 +28,29 @@ const Page = () => {
     router.back();
   }, [router]);
 
+  const [markDown, setMarkDown] = useState('');
+
+  console.log(markDown, '#####markDown');
+
   return (
     <>
-      <Layout noFooter noNav className="h-screen w-full overflow-hidden">
+      <Layout
+        noFooter
+        noNav
+        className="h-screen w-full overflow-hidden bg-white"
+      >
         <form
           onSubmit={handleSubmit(async (data) => {
             try {
-              const editorIns = ref?.current?.getInstance();
-              const contentMark = editorIns.getMarkdown();
               // contentMark 길이 체크
-              if (contentMark?.length === 0) {
+              if (markDown?.length === 0) {
                 throw new Error('내용을 입력해주세요.');
               }
 
               // add firestore
               await addDoc(collection(db, 'posts'), {
                 title: data.title,
-                content: contentMark,
+                content: markDown,
                 createdAt: new Date(),
               });
 
@@ -83,7 +89,7 @@ const Page = () => {
               />
             </div>
           </div>
-          <NoSsrEditor content="" editorRef={ref} />
+          <NoSsrEditor setMarkDown={setMarkDown} />
           <div className="fixed bottom-0 flex h-12 w-full lg:h-14">
             <button
               className="h-full w-[40%] bg-gray-500 text-sm font-medium text-white hover:bg-gray-700 md:text-base lg:text-base"
