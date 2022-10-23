@@ -42,6 +42,9 @@ const Page = () => {
         <form
           onSubmit={handleSubmit(async (data) => {
             try {
+              if (data?.title?.length === 0) {
+                throw new Error('제목을 입력해주세요.');
+              }
               // contentMark 길이 체크
               if (markDown?.length === 0) {
                 throw new Error('내용을 입력해주세요.');
@@ -78,14 +81,13 @@ const Page = () => {
               </label>
               <input
                 {...register('title', {
-                  required: '필수 입력 사항입니다.',
+                  // required: '필수 입력 사항입니다.',
                 })}
                 type="text"
                 id="title"
                 name="title"
                 placeholder="제목을 입력해주세요"
-                // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-                className="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
+                className="w-full rounded border border-gray-200 bg-gray-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
               />
             </div>
           </div>
