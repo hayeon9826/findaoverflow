@@ -1,12 +1,12 @@
-import { db } from 'config/firebase';
 import NextAuth from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
-import { FirestoreAdapter } from '../../../utils/firebaseAdapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
 
 export default NextAuth({
   session: {
     strategy: 'jwt',
+    maxAge: 60 * 60 * 2,
+    updateAge: 60 * 60,
   },
   providers: [
     GoogleProvider({
@@ -39,6 +39,21 @@ export default NextAuth({
   pages: {
     signIn: '/users/login',
   },
-  adapter: FirestoreAdapter({ db } as any),
-  callbacks: {},
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.name = user.name;
+        token.email = user.email;
+        token.picture = user.image;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.id = token.sub;
+      session.user.name = token.name || '';
+      session.user.image = token.picture || '';
+      session.user.email = token.email || '';
+      return session;
+    },
+  },
 });
