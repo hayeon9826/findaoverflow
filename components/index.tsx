@@ -44,7 +44,7 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
           href="https://cdn.finda.co.kr/images/favicon/finda_192.png"
         />
       </Head>
-      <header className="sticky top-0 z-10 text-gray-600 backdrop-blur-lg">
+      <header className="sticky top-0 text-gray-600 backdrop-blur-lg">
         <nav className="container mx-auto flex flex-row flex-wrap items-center justify-between p-5">
           <div className="my-auto inline-flex">
             <Link href="/">
@@ -135,17 +135,14 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
               </>
             )}
             {session && session.user?.name && (
-              <Link href="/users/mypage">
-                <button className="mt-4 inline-flex items-center rounded border-0 bg-gray-100 py-1 px-3 text-sm hover:bg-gray-200 focus:outline-none md:mt-0">
-                  <b>{session?.user?.name || status}</b>님 환영합니다!
-                </button>
-              </Link>
+              <button className="mt-4 inline-flex items-center rounded border-0 bg-gray-100 py-1 px-3 text-sm hover:bg-gray-200 focus:outline-none md:mt-0">
+                <b>{session?.user?.name || status}</b>님 환영합니다!
+              </button>
             )}
           </div>
         </nav>
         {open && (
           <div
-            // eslint-disable-next-line tailwindcss/no-custom-classname
             className={`z-100 absolute block w-full flex-wrap items-center justify-center bg-white text-base transition duration-500 ease-in-out md:ml-auto md:hidden md:w-auto lg:hidden ${open} ? 'translate-y-100 : 'translate-y-0`}
           >
             <ul className="w-full text-sm font-normal text-gray-500">
@@ -191,11 +188,9 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
               )}
               {session && session.user?.name && (
                 <li className="w-full py-4 px-6">
-                  <Link href="/users/mypage">
-                    <button className="inline-flex items-center rounded border-0 bg-gray-100 py-1 px-3 text-sm hover:bg-gray-200 focus:outline-none md:mt-0">
-                      <b>{session?.user?.name || status}</b>님 환영합니다!
-                    </button>
-                  </Link>
+                  <button className="inline-flex items-center rounded border-0 bg-gray-100 py-1 px-3 text-sm hover:bg-gray-200 focus:outline-none md:mt-0">
+                    <b>{session?.user?.name || status}</b>님 환영합니다!
+                  </button>
                 </li>
               )}
             </ul>
