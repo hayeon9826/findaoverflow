@@ -22,15 +22,12 @@ const Page = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const ref = useRef<any>(null);
 
   const handleGoBack = useCallback(() => {
     router.back();
   }, [router]);
 
   const [markDown, setMarkDown] = useState('');
-
-  console.log(markDown, '#####markDown');
 
   return (
     <>

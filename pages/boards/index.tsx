@@ -22,7 +22,7 @@ function BoardsPage() {
 
   return (
     <Layout className="flex min-h-screen justify-center">
-      <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left px-4">
+      <section className="container mx-auto mt-12 max-w-3xl px-4 pb-24 text-left">
         <h2 className="flex max-w-3xl justify-between text-3xl font-bold">
           핀다 Tech 이야기
           <button

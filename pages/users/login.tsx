@@ -19,7 +19,6 @@ function LoginPage() {
     register,
     handleSubmit,
     reset,
-    watch,
     formState: { errors },
   } = useForm<FormValues>();
 

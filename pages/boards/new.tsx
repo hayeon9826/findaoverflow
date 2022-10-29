@@ -34,7 +34,7 @@ const Page = () => {
             onSubmit={handleSubmit(async (data) => {
               try {
                 // add firestore
-                const dbData = await addDoc(collection(db, 'boards'), {
+                await addDoc(collection(db, 'boards'), {
                   title: data.title,
                   content: data.content,
                   createdAt: new Date(),
@@ -68,7 +68,7 @@ const Page = () => {
                   id="title"
                   name="title"
                   placeholder="제목을 입력해주세요"
-                  className="w-full rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
+                  className="w-full rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
                 />
               </div>
               <p className="mb-4 mt-2 text-xs text-red-500">
@@ -94,7 +94,7 @@ const Page = () => {
                   placeholder="내용을 입력해주세요."
                   id="content"
                   name="content"
-                  className="h-32 w-full resize-none rounded border border-gray-300 bg-gray-100 bg-opacity-50 py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
+                  className="h-32 w-full resize-none rounded border border-gray-300 bg-gray-100 py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out placeholder:text-sm focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200"
                 ></textarea>
               </div>
               <p className="mb-4 mt-2 text-xs text-red-500">

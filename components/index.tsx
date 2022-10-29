@@ -143,7 +143,9 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
         </nav>
         {open && (
           <div
-            className={`z-100 absolute block w-full flex-wrap items-center justify-center bg-white text-base transition duration-500 ease-in-out md:ml-auto md:hidden md:w-auto lg:hidden ${open} ? 'translate-y-100 : 'translate-y-0`}
+            className={`absolute block w-full flex-wrap items-center justify-center bg-white text-base transition duration-500 ease-in-out md:ml-auto md:hidden md:w-auto lg:hidden ${
+              open ? 'translate-y-100' : 'translate-y-0'
+            }`}
           >
             <ul className="w-full text-sm font-normal text-gray-500">
               {session && session.user?.name ? (

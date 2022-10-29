@@ -52,7 +52,7 @@ function PostPage() {
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
                 <div className="mt-8">
-                  <NoSsrViewer body={post?.content} />
+                  <NoSsrViewer body={post?.content} setMarkDown={null} />
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@ function PostPage() {
               <div className="flex flex-row-reverse">
                 <button
                   type="submit"
-                  className="focus:ring-primary-200 hover:bg-primary-800 inline-flex items-center rounded-lg bg-blue-600 py-2.5 px-4 text-center text-xs font-medium text-white focus:ring-4"
+                  className="inline-flex items-center rounded-lg bg-blue-600 py-2.5 px-4 text-center text-xs font-medium text-white focus:ring-4"
                 >
                   board comment
                 </button>

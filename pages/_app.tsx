@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { RecoilRoot } from 'recoil';
 import { SessionProvider } from 'next-auth/react';
 import { Session } from 'next-auth';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({

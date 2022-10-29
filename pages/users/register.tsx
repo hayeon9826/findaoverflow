@@ -61,7 +61,7 @@ function RegisterPage() {
 
                     if (!user) {
                       const randomUid = genSaltSync(12);
-                      const dbData = await addDoc(collection(db, 'users'), {
+                      await addDoc(collection(db, 'users'), {
                         uid: randomUid,
                         name: data.name,
                         email: data.email,
@@ -184,19 +184,13 @@ function RegisterPage() {
                 </button>
               </form>
 
-              <div className="text-grey-dark mt-4 text-center text-sm">
+              <div className="mt-4 text-center text-sm">
                 By signing up, you agree to the
-                <a
-                  className="border-grey-dark text-grey-dark ml-2 border-b no-underline"
-                  href="#"
-                >
+                <a className="ml-2 border-b no-underline" href="#">
                   Terms of Service
                 </a>{' '}
                 and
-                <a
-                  className="border-grey-dark text-grey-dark ml-2 border-b no-underline"
-                  href="#"
-                >
+                <a className="ml-2 border-b no-underline" href="#">
                   Privacy Policy
                 </a>
               </div>
@@ -205,9 +199,7 @@ function RegisterPage() {
             <div className="mt-6 text-sm text-gray-700">
               Already have an account?
               <Link href="/users/login">
-                <a className="border-blue text-blue ml-2 border-b no-underline">
-                  Log in
-                </a>
+                <a className="ml-2 border-b no-underline">Log in</a>
               </Link>
             </div>
           </div>

@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import JoditEditor from 'jodit-react';
 import 'jodit/build/jodit.css';
 
 export default function TextEditor({
   placeholder = '',
-  setMarkDown = null,
+  setMarkDown,
   body = '',
 }) {
   const editor = useRef(null);
@@ -17,6 +17,13 @@ export default function TextEditor({
     style: body ? {} : { height: '500px' },
   };
 
+  const handleBlur = useCallback((newContent) => {
+    if (newContent) {
+      setContent(newContent);
+      setMarkDown && setMarkDown(newContent);
+    }
+  }, []);
+
   return (
     <>
       <JoditEditor
@@ -24,10 +31,7 @@ export default function TextEditor({
         value={body || content}
         config={config}
         tabIndex={1} // tabIndex of textarea
-        onBlur={(newContent) => {
-          setContent(newContent);
-          setMarkDown && setMarkDown(newContent);
-        }} // preferred to use only this option to update the content for performance reasons
+        onBlur={handleBlur} // preferred to use only this option to update the content for performance reasons
       />
     </>
   );

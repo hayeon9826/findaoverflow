@@ -54,7 +54,7 @@ function BoardPage() {
           </div>
           <hr className="my-8" />
           {/* comment section */}
-          <section className="not-format">
+          <section>
             <div className="mb-6 flex items-center justify-between">
               <h2 className="text-lg font-bold text-gray-900 lg:text-2xl">
                 Discussion (20)
@@ -76,7 +76,7 @@ function BoardPage() {
               <div className="flex flex-row-reverse">
                 <button
                   type="submit"
-                  className="focus:ring-primary-200 hover:bg-primary-800 inline-flex items-center rounded-lg bg-blue-600 py-2.5 px-4 text-center text-xs font-medium text-white focus:ring-4"
+                  className="inline-flex items-center rounded-lg bg-blue-600 py-2.5 px-4 text-center text-xs font-medium text-white focus:ring-4"
                 >
                   board comment
                 </button>

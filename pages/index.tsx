@@ -13,7 +13,7 @@ import { BoardType, PostType } from 'config/interface';
 dayjs.locale('ko');
 
 const Home: NextPage = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const boards = useFirestoreQuery(
     query(collection(db, 'boards'), orderBy('createdAt', 'desc'), limit(5)),
   );
