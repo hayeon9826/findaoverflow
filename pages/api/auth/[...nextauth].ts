@@ -26,7 +26,7 @@ export default NextAuth({
           const user = {
             email: credentials.email,
             name: credentials.name,
-            uid: credentials.id,
+            id: credentials.id,
           };
           if (user) {
             return user;
