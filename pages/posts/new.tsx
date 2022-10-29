@@ -94,6 +94,7 @@ const Page = () => {
           <NoSsrEditor setMarkDown={setMarkDown} />
           <div className="fixed bottom-0 flex h-12 w-full lg:h-14">
             <button
+              type="button"
               className="h-full w-[40%] bg-gray-500 text-sm font-medium text-white hover:bg-gray-700 md:text-base lg:text-base"
               onClick={handleGoBack}
             >

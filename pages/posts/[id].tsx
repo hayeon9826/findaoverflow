@@ -4,15 +4,10 @@ import { useRouter } from 'next/router';
 import { getDoc, doc } from 'firebase/firestore';
 import { PostType } from 'config/interface';
 import * as dayjs from 'dayjs';
-import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { Layout } from 'components/index';
 import dynamic from 'next/dynamic';
 import 'dayjs/locale/ko';
 dayjs.locale('ko');
-
-const NoSsrViewer = dynamic(() => import('components/TuiViewer'), {
-  ssr: false,
-});
 
 function PostPage() {
   const router = useRouter();
@@ -52,9 +47,7 @@ function PostPage() {
                     .unix(post?.createdAt?.seconds as number)
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
-                <div className="mt-8">
-                  {post?.content && <NoSsrViewer content={post?.content} />}
-                </div>
+                <div className="mt-8">{post?.content}</div>
               </div>
             </div>
           </div>
