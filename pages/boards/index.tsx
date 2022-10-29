@@ -1,23 +1,37 @@
+import { useCallback } from 'react';
 import { db } from 'config/firebase';
 import Link from 'next/link';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useFirestoreQuery } from 'utils/index';
 import { BoardType } from 'config/interface';
 import { Layout } from 'components/index';
+import { useRouter } from 'next/router';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 dayjs.locale('ko');
 
 function BoardsPage() {
+  const router = useRouter();
   const boards = useFirestoreQuery(
     query(collection(db, 'boards'), orderBy('createdAt', 'desc')),
   );
 
+  const handleClick = useCallback(() => {
+    router.push('/boards/new');
+  }, []);
+
   return (
     <Layout className="flex min-h-screen justify-center">
-      <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left">
+      <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left px-4">
         <h2 className="flex max-w-3xl justify-between text-3xl font-bold">
           핀다 Tech 이야기
+          <button
+            type="button"
+            onClick={handleClick}
+            className="mr-2 mb-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+          >
+            이야기 작성
+          </button>
         </h2>
         <div className="container mx-auto mt-12 max-w-3xl pb-24">
           <div className="-my-8 divide-y-2 divide-gray-100">
