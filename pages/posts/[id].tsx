@@ -9,6 +9,10 @@ import dynamic from 'next/dynamic';
 import 'dayjs/locale/ko';
 dayjs.locale('ko');
 
+const NoSsrViewer = dynamic(() => import('components/JoditEditor.js'), {
+  ssr: false,
+});
+
 function PostPage() {
   const router = useRouter();
   const { id } = router.query;
@@ -47,7 +51,9 @@ function PostPage() {
                     .unix(post?.createdAt?.seconds as number)
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
-                <div className="mt-8">{post?.content}</div>
+                <div className="mt-8">
+                  <NoSsrViewer body={post?.content} />
+                </div>
               </div>
             </div>
           </div>

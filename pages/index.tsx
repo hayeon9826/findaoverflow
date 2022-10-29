@@ -56,9 +56,12 @@ const Home: NextPage = () => {
                               {post.title.substring(0, 33) ||
                                 '제목이 없습니다.'}
                             </h1>
-                            <p className="mb-3 h-20 overflow-hidden text-clip leading-relaxed">
-                              {post?.content?.substring(0, 100)}
-                            </p>
+                            <div
+                              className="mb-3 h-20 overflow-hidden text-clip leading-relaxed"
+                              dangerouslySetInnerHTML={{
+                                __html: post?.content.substring(0, 100),
+                              }}
+                            />
                             <div className="flex flex-wrap items-center ">
                               <Link href={`/posts/${post?.id}`}>
                                 <a className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">

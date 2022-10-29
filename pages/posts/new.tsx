@@ -7,7 +7,7 @@ import { db } from 'config/firebase';
 import { Layout } from 'components/index';
 import dynamic from 'next/dynamic';
 
-const NoSsrEditor = dynamic(() => import('components/LexicalEditor.js'), {
+const NoSsrEditor = dynamic(() => import('components/JoditEditor.js'), {
   ssr: false,
 });
 

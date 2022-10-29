@@ -28,13 +28,6 @@
       "interface/*": ["./src/interface/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "utils/index.js",
-    "components/LexicalEditor.js",
-    "components/plugins/AutoLinkPlugins.js"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/index.js"],
   "exclude": ["node_modules"]
 }
