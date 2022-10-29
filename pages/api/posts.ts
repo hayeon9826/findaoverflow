@@ -13,8 +13,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>,
 ) {
+  const admin = getFirebaseAdmin();
   if (req.method === 'GET') {
-    const admin = getFirebaseAdmin();
     try {
       const token = await getToken({ req });
 
