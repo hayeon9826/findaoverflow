@@ -1,19 +1,18 @@
+import { Layout } from 'components/index';
+import { db } from 'config/firebase';
+import { BoardType, PostType } from 'config/interface';
+import * as dayjs from 'dayjs';
+import 'dayjs/locale/ko';
+import { collection, limit, orderBy, query } from 'firebase/firestore';
 import type { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useFirestoreQuery } from 'utils/index';
-import { collection, limit, orderBy, query } from 'firebase/firestore';
-import { dehydrate, QueryClient } from 'react-query';
-import { db } from 'config/firebase';
-import { fetchPosts } from 'hooks/usePosts';
-import { Layout } from 'components/index';
-import * as dayjs from 'dayjs';
-import 'dayjs/locale/ko';
-import { BoardType, PostType } from 'config/interface';
 dayjs.locale('ko');
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession();
+
   const boards = useFirestoreQuery(
     query(collection(db, 'boards'), orderBy('createdAt', 'desc'), limit(5)),
   );
@@ -24,10 +23,10 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <main className="flex w-full flex-1 flex-col items-center justify-center px-8 text-center lg:px-20">
-        {session && session.user?.name ? (
+        {session && session.user?.id ? (
           <>
             <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left">
-              <h2 className="m-auto flex max-w-3xl justify-between text-3xl font-bold">
+              <h2 className="m-auto flex max-w-3xl justify-between px-4 text-3xl font-bold">
                 핀다 Tech 포스트
                 {posts && posts.length > 0 && (
                   <Link href="/posts">
@@ -37,6 +36,13 @@ const Home: NextPage = () => {
                   </Link>
                 )}
               </h2>
+              <button
+                onClick={async () => {
+                  fetch('/api/posts').then((res) => console.log(res.json()));
+                }}
+              >
+                Test!!
+              </button>
               <div className="container mx-auto mt-12 pb-24 text-left">
                 <div className="-my-8 flex flex-wrap">
                   {posts && posts.length > 0 ? (
@@ -128,7 +134,7 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </section>
-            <section className="container mx-auto mt-12 max-w-3xl pb-24 text-left">
+            <section className="container mx-auto mt-12 max-w-3xl px-4 pb-24 text-left">
               <h2 className="m-auto flex max-w-3xl justify-between text-3xl font-bold">
                 핀다 Tech 이야기
                 {boards && boards.length > 0 && (
@@ -197,7 +203,7 @@ const Home: NextPage = () => {
           </>
         ) : (
           <>
-            <section className="bg-white">
+            <section className="bg-white px-4">
               <div className="container mx-auto flex flex-col items-center px-4 py-12 text-center">
                 <h2 className="text-3xl font-semibold tracking-tight text-gray-700 sm:text-4xl ">
                   findaoverflow
@@ -239,15 +245,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-export async function getStaticProps() {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(['posts', 10], () => fetchPosts());
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-}

@@ -103,13 +103,13 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
             )}
           </button>
           <div className="hidden w-full flex-wrap items-center justify-center text-base md:ml-auto md:block md:w-auto lg:block">
-            {session && session.user?.name ? (
+            {session && session.user?.id ? (
               <>
-                <Link href="/boards">
-                  <a className="mr-5 hover:text-gray-900">이야기 목록</a>
-                </Link>
                 <Link href="/posts">
                   <a className="mr-5 hover:text-gray-900">포스트 목록</a>
+                </Link>
+                <Link href="/boards">
+                  <a className="mr-5 hover:text-gray-900">이야기 목록</a>
                 </Link>
                 <button
                   className="mr-5 hover:text-gray-900"
@@ -148,16 +148,17 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
             <ul className="w-full text-sm font-normal text-gray-500">
               {session && session.user?.name ? (
                 <>
-                  <Link href="/posts/new">
-                    <li className="w-full py-4 px-6">
-                      <a className="mr-5 hover:text-gray-900">포스트 작성</a>
-                    </li>
-                  </Link>
                   <Link href="/posts">
                     <li className="w-full py-4 px-6">
                       <a className="mr-5 hover:text-gray-900">포스트 목록</a>
                     </li>
                   </Link>
+                  <Link href="/boards">
+                    <li className="w-full py-4 px-6">
+                      <a className="mr-5 hover:text-gray-900">이야기 목록</a>
+                    </li>
+                  </Link>
+
                   <button
                     className="mr-5 hover:text-gray-900"
                     onClick={() => signOut()}
@@ -202,6 +203,7 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
 
 export const Layout = ({
   noNav = false,
+  noFooter = false,
   title = '핀다오버플로우',
   className,
   children,
@@ -216,7 +218,7 @@ export const Layout = ({
       >
         {children}
       </div>
-      <Footer />
+      {!noFooter && <Footer />}
     </>
   );
 };
