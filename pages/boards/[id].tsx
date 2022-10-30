@@ -43,7 +43,7 @@ function BoardPage() {
                 </h2>
                 <p className="text-xs leading-relaxed">
                   {dayjs
-                    .unix(board?.createdAt?.seconds as number)
+                    .unix(board?.createdAt?._seconds as number)
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
                 <p className="mt-4 whitespace-pre-wrap leading-relaxed">

@@ -47,7 +47,7 @@ function BoardsPage() {
                     </h2>
                     <p className="text-xs leading-relaxed">
                       {dayjs
-                        .unix(board?.createdAt?.seconds)
+                        .unix(board?.createdAt?._seconds)
                         .format('YYYY-MM-DD HH:MM:ss')}
                     </p>
                     <p className="leading-relaxed">

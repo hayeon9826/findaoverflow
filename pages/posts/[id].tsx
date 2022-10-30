@@ -49,7 +49,7 @@ function PostPage() {
                 </h2>
                 <p className="text-xs leading-relaxed">
                   {dayjs
-                    .unix(post?.createdAt?.seconds as number)
+                    .unix(post?.createdAt?._seconds as number)
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
                 <div className="mt-8">
