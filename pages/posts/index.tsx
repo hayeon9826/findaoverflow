@@ -18,7 +18,7 @@ function PostsPage() {
         </h2>
         <div className="container mx-auto mt-12 pb-24 text-left">
           <div className="-my-8 flex flex-wrap">
-            {data && data.posts.length > 0 ? (
+            {data && data?.posts?.length > 0 ? (
               data.posts.map((post: PostType) => (
                 <div className="p-4 md:w-1/2" key={post?.id}>
                   <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200 border-opacity-60">
