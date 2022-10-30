@@ -12,7 +12,7 @@ import { SessionProvider } from 'next-auth/react';
 import { Session } from 'next-auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { ReactQueryDevtools } from 'react-query/devtools';
 function MyApp({
   Component,
   pageProps,
@@ -20,16 +20,19 @@ function MyApp({
   const [queryClient] = useState(() => new QueryClient());
   const { dehydratedState, session } = pageProps;
   return (
-    <SessionProvider session={session as Session}>
-      <RecoilRoot>
-        <QueryClientProvider client={queryClient}>
-          <Hydrate state={dehydratedState}>
-            <ToastContainer />
-            <Component {...pageProps} />
-          </Hydrate>
-        </QueryClientProvider>
-      </RecoilRoot>
-    </SessionProvider>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <SessionProvider session={session as Session}>
+          <RecoilRoot>
+            <Hydrate state={dehydratedState}>
+              <ToastContainer />
+              <Component {...pageProps} />
+            </Hydrate>
+          </RecoilRoot>
+        </SessionProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </>
   );
 }
 
