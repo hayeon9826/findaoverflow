@@ -20,7 +20,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Install ESLint
         run: |
           npm install eslint@8.14.0
