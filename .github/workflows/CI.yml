@@ -1,10 +1,6 @@
 name: FindaOverflow CI
 
 on:
-  workflow_run:
-    workflows: ['ESLint']
-    types:
-      - completed
   push:
     branches: [main]
   pull_request:
