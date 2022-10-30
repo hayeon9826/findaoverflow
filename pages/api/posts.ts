@@ -1,19 +1,15 @@
-import { getFirebaseAdmin } from 'config/firebaseAdmin';
 import { PostType } from 'config/interface';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getToken } from 'next-auth/jwt';
+import { fetchPostsFromFirebase } from '../../apis/posts';
 type Data = {
   posts?: PostType[];
   error?: string;
 };
-
-const DEFAULT_POSTS_FETCH_COUNT = 20;
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>,
 ) {
-  const admin = getFirebaseAdmin();
   if (req.method === 'GET') {
     try {
       const token = await getToken({ req });
@@ -28,22 +24,11 @@ export default async function handler(
     }
 
     const { count, ts } = req.query;
-    const timestamp = ts
-      ? admin.firestore.Timestamp.fromMillis(Number(ts) * 1000)
-      : admin.firestore.Timestamp.fromDate(new Date(2099, 12, 31));
 
-    const data = await admin
-      .firestore()
-      .collection('posts')
-      .orderBy('createdAt', 'desc')
-      .startAfter(timestamp)
-      .limit(count ? Number(count) : DEFAULT_POSTS_FETCH_COUNT)
-      .get();
-
-    const posts = data.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    })) as PostType[];
+    const posts: PostType[] = await fetchPostsFromFirebase({
+      count: count ? Number(count) : undefined,
+      ts: ts ? Number(ts) : undefined,
+    });
 
     res.status(200).json({ posts });
   }
