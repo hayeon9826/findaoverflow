@@ -1,7 +1,6 @@
 import { PostType } from 'config/interface';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getToken } from 'next-auth/jwt';
-import { fetchPostsFromFirebase } from '../../apis/posts';
+import { fetchPostsFromFirebase } from '../../../apis/posts';
 type Data = {
   posts?: PostType[];
   error?: string;

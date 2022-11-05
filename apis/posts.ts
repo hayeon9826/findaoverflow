@@ -41,3 +41,16 @@ export async function fetchPostsFromFirebase({
 
   return posts;
 }
+
+interface FetchPost {
+  id: string;
+}
+export async function fetchPostByIdFromFirebase({
+  id,
+}: FetchPost): Promise<PostType> {
+  const admin = getFirebaseAdmin();
+
+  const result = await admin.firestore().collection('posts').doc(id).get();
+
+  return result.data() as PostType;
+}
