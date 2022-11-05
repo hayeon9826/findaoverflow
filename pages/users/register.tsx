@@ -43,12 +43,6 @@ function RegisterPage() {
                 className="mt-6"
                 onSubmit={handleSubmit(async (data) => {
                   try {
-                    // const credential = await createUserWithEmailAndPassword(
-                    //   auth,
-                    //   data.email,
-                    //   data.password,
-                    // );
-                    // const { user } = credential;
                     const user = await getUserByEmail(data?.email);
                     // firestore 서버에 데이터 저장. password는 해싱해서
                     if (user) {
@@ -94,13 +88,13 @@ function RegisterPage() {
                     htmlFor="name"
                     className="block text-sm text-gray-800 "
                   >
-                    Username
+                    이름
                   </label>
                   <input
                     type="text"
                     className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
                     id="name"
-                    placeholder="Name"
+                    placeholder="이름을 입력해주세요."
                     {...register('name', {
                       required: '필수 입력 사항입니다.',
                     })}
@@ -114,13 +108,13 @@ function RegisterPage() {
                     htmlFor="email"
                     className="block text-sm text-gray-800 "
                   >
-                    Email
+                    이메일
                   </label>
                   <input
                     type="text"
                     className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
                     id="email"
-                    placeholder="Email"
+                    placeholder="이메일을 입력해주세요."
                     {...register('email', {
                       required: '필수 입력 사항입니다',
                     })}
@@ -134,13 +128,13 @@ function RegisterPage() {
                     htmlFor="password"
                     className="block text-sm text-gray-800 "
                   >
-                    Password
+                    비밀번호
                   </label>
                   <input
                     type="password"
                     className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
                     id="password"
-                    placeholder="Password"
+                    placeholder="비밀번호를 입력해주세요."
                     {...register('password', {
                       required: '필수 입력 사항입니다.',
                       minLength: {
@@ -158,13 +152,13 @@ function RegisterPage() {
                     htmlFor="password_confirmation"
                     className="block text-sm text-gray-800 "
                   >
-                    Confirm Password
+                    비밀번호 확인
                   </label>
                   <input
                     type="password"
                     className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
                     id="password_confirmation"
-                    placeholder="Confirm Password"
+                    placeholder="비밀번호를 다시 입력해주세요."
                     {...register('password_confirmation', {
                       required: '필수 입력 사항입니다.',
                       validate: (value) =>
@@ -180,33 +174,36 @@ function RegisterPage() {
                   type="submit"
                   className="my-1 w-full rounded bg-blue-600 py-2 text-center text-white hover:bg-blue-700 focus:outline-none"
                 >
-                  Create Account
+                  계정 생성하기
                 </button>
               </form>
 
               <div className="text-grey-dark mt-4 text-center text-sm">
-                By signing up, you agree to the
+                회원가입시
                 <a
                   className="border-grey-dark text-grey-dark ml-2 border-b no-underline"
                   href="#"
                 >
-                  Terms of Service
+                  이용약관
                 </a>{' '}
-                and
+                및
                 <a
                   className="border-grey-dark text-grey-dark ml-2 border-b no-underline"
                   href="#"
                 >
-                  Privacy Policy
+                  개인정보처리방침
                 </a>
+                에
+                <br />
+                동의하는 것으로 간주합니다.
               </div>
             </div>
 
             <div className="mt-6 text-sm text-gray-700">
-              Already have an account?
+              계정이 이미 있으신가요?
               <Link href="/users/login">
                 <a className="border-blue text-blue ml-2 border-b no-underline">
-                  Log in
+                  로그인하기
                 </a>
               </Link>
             </div>

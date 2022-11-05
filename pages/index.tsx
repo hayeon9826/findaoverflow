@@ -36,13 +36,6 @@ const Home: NextPage = () => {
                   </Link>
                 )}
               </h2>
-              <button
-                onClick={async () => {
-                  fetch('/api/posts').then((res) => console.log(res.json()));
-                }}
-              >
-                Test!!
-              </button>
               <div className="container mx-auto mt-12 pb-24 text-left">
                 <div className="-my-8 flex flex-wrap">
                   {posts && posts.length > 0 ? (

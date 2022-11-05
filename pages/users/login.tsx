@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { getUserByEmail, verifyPassword } from 'utils/auth';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
 
 function LoginPage() {
   const router = useRouter();
@@ -82,14 +83,14 @@ function LoginPage() {
           >
             <div>
               <label htmlFor="username" className="block text-sm text-gray-800">
-                Email
+                이메일
               </label>
               <input
                 type="text"
                 {...register('email', {
                   required: '필수 입력 사항입니다',
                 })}
-                placeholder="finda@findaoverflow.com"
+                placeholder="이메일을 입력해주세요."
                 className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700 focus:border-blue-400  focus:outline-none focus:ring focus:ring-opacity-40"
               />
               <p className="mb-4 mt-2 text-xs text-red-500">
@@ -103,11 +104,11 @@ function LoginPage() {
                   htmlFor="password"
                   className="block text-sm text-gray-800 "
                 >
-                  Password
+                  비밀번호
                 </label>
-                <a href="#" className="text-xs text-gray-400 hover:underline">
+                {/* <a href="#" className="text-xs text-gray-400 hover:underline">
                   Forget Password?
-                </a>
+                </a> */}
               </div>
 
               <input
@@ -119,6 +120,7 @@ function LoginPage() {
                     message: '8자 이상 입력해주세요.',
                   },
                 })}
+                placeholder="비밀번호를 입력해주세요."
                 className="mt-2 block w-full rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400  focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
               />
               <p className="mb-4 mt-2 text-xs text-red-500">
@@ -128,7 +130,7 @@ function LoginPage() {
 
             <div className="mt-6">
               <button className="w-full rounded-md bg-gray-700 px-4 py-2 tracking-wide text-white transition-colors duration-300 hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
-                Login
+                로그인하기
               </button>
             </div>
           </form>
@@ -156,16 +158,22 @@ function LoginPage() {
                 <path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z"></path>
               </svg>
 
-              <span className="mx-2 hidden sm:inline">Sign in with Google</span>
+              <span className="mx-2 hidden sm:inline">Google로 로그인하기</span>
             </button>
           </div>
 
           <p className="mt-8 text-center text-xs font-light text-gray-400">
             {' '}
-            {`Don't have an account?`}
-            <a href="#" className="font-medium text-gray-700  hover:underline">
-              Create One
-            </a>
+            {`계정이 없으신가요?`}
+            <Link href="/users/register">
+              <a
+                href="#"
+                className="font-medium text-gray-700  hover:underline"
+              >
+                {' '}
+                계정 생성하기
+              </a>
+            </Link>
           </p>
         </div>
       </Layout>
