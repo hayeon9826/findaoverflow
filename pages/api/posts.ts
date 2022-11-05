@@ -11,18 +11,6 @@ export default async function handler(
   res: NextApiResponse<Data>,
 ) {
   if (req.method === 'GET') {
-    try {
-      const token = await getToken({ req });
-
-      if (!token) {
-        throw new Error('토큰 에러');
-      }
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error(e);
-      return res.status(403).json({ error: '토큰 인증 실패' });
-    }
-
     const { count, ts } = req.query;
 
     const posts: PostType[] = await fetchPostsFromFirebase({
