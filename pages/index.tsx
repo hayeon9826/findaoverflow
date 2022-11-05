@@ -8,6 +8,7 @@ import type { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useFirestoreQuery } from 'utils/index';
+
 dayjs.locale('ko');
 
 const Home: NextPage = () => {
@@ -35,13 +36,6 @@ const Home: NextPage = () => {
                   </Link>
                 )}
               </h2>
-              {/* <button
-                onClick={async () => {
-                  fetch('/api/posts').then((res) => console.log(res.json()));
-                }}
-              >
-                Test!!
-              </button> */}
               <div className="container mx-auto mt-12 pb-24 text-left">
                 <div className="-my-8 flex flex-wrap">
                   {posts && posts.length > 0 ? (
@@ -57,16 +51,15 @@ const Home: NextPage = () => {
                             <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400">
                               {post?.category || 'CATEGORY'}
                             </h2>
-                            <h1 className="mb-3 h-8 text-lg font-medium text-gray-900">
+                            <h1 className="mb-3 h-8 text-lg font-medium text-gray-900 truncate overflow-hidden">
                               {post.title.substring(0, 33) ||
                                 '제목이 없습니다.'}
                             </h1>
-                            <div
-                              className="mb-3 h-20 overflow-hidden text-clip leading-relaxed"
-                              dangerouslySetInnerHTML={{
-                                __html: post?.content.substring(0, 100),
-                              }}
-                            />
+                            <div className="mb-3 h-20 overflow-hidden text-clip leading-relaxed">
+                              {post?.content
+                                .replace(/<[^>]+>/g, '')
+                                .substring(0, 100)}
+                            </div>
                             <div className="flex flex-wrap items-center ">
                               <Link href={`/posts/${post?.id}`}>
                                 <a className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
