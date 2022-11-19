@@ -205,9 +205,9 @@ function RegisterPage() {
             <div className="mt-6 text-sm text-gray-700">
               Already have an account?
               <Link href="/users/login">
-                <a className="border-blue text-blue ml-2 border-b no-underline">
+                <span className="border-blue text-blue ml-2 border-b no-underline">
                   Log in
-                </a>
+                </span>
               </Link>
             </div>
           </div>

@@ -87,7 +87,7 @@ function PostsPage() {
                         </p>
                         <div className="flex flex-wrap items-center ">
                           <Link href={`/posts/${post?.id}`}>
-                            <a className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
+                            <span className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
                               더보기
                               <svg
                                 className="ml-2 h-4 w-4"
@@ -101,7 +101,7 @@ function PostsPage() {
                                 <path d="M5 12h14"></path>
                                 <path d="M12 5l7 7-7 7"></path>
                               </svg>
-                            </a>
+                            </span>
                           </Link>
                           <span className="mr-3 ml-auto inline-flex items-center border-r-2 border-gray-200 py-1 pr-3 text-sm leading-none text-gray-400 md:ml-0 lg:ml-auto">
                             <svg

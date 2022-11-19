@@ -30,9 +30,9 @@ const Home: NextPage = () => {
                 핀다 Tech 포스트
                 {posts && posts.length > 0 && (
                   <Link href="/posts">
-                    <a className="text-base font-semibold text-blue-600">
+                    <span className="text-base font-semibold text-blue-600">
                       더보기
-                    </a>
+                    </span>
                   </Link>
                 )}
               </h2>
@@ -67,7 +67,7 @@ const Home: NextPage = () => {
                             </p>
                             <div className="flex flex-wrap items-center ">
                               <Link href={`/posts/${post?.id}`}>
-                                <a className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
+                                <span className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
                                   더보기
                                   <svg
                                     className="ml-2 h-4 w-4"
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
                                     <path d="M5 12h14"></path>
                                     <path d="M12 5l7 7-7 7"></path>
                                   </svg>
-                                </a>
+                                </span>
                               </Link>
                               <span className="mr-3 ml-auto inline-flex items-center border-r-2 border-gray-200 py-1 pr-3 text-sm leading-none text-gray-400 md:ml-0 lg:ml-auto">
                                 <svg
@@ -139,9 +139,9 @@ const Home: NextPage = () => {
                 핀다 Tech 이야기
                 {boards && boards.length > 0 && (
                   <Link href="/boards">
-                    <a className="text-base font-semibold text-blue-600">
+                    <span className="text-base font-semibold text-blue-600">
                       더보기
-                    </a>
+                    </span>
                   </Link>
                 )}
               </h2>
@@ -166,7 +166,7 @@ const Home: NextPage = () => {
                             {board?.content?.substring(0, 200)}
                           </p>
                           <Link href={`/boards/${board?.id}`}>
-                            <a className="mt-4 inline-flex items-center text-blue-600">
+                            <span className="mt-4 inline-flex items-center text-blue-600">
                               더보기
                               <svg
                                 className="ml-2 h-4 w-4"
@@ -180,7 +180,7 @@ const Home: NextPage = () => {
                                 <path d="M5 12h14"></path>
                                 <path d="M12 5l7 7-7 7"></path>
                               </svg>
-                            </a>
+                            </span>
                           </Link>
                         </div>
                       </div>
@@ -215,23 +215,17 @@ const Home: NextPage = () => {
                 <div className="mt-6 sm:-mx-2">
                   <div className="inline-flex w-full sm:mx-2 sm:w-auto">
                     <Link href="/users/login">
-                      <a
-                        href="#"
-                        className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-                      >
+                      <span className="inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                         핀다 로그인
-                      </a>
+                      </span>
                     </Link>
                   </div>
 
                   <div className="mt-4 inline-flex w-full sm:mx-2 sm:mt-0 sm:w-auto">
                     <Link href="/users/register">
-                      <a
-                        href="#"
-                        className="inline-flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-5 py-2 text-gray-700 transition-colors duration-150 hover:bg-gray-100  focus:ring  focus:ring-gray-200  focus:ring-opacity-80 sm:w-auto"
-                      >
+                      <span className="inline-flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-5 py-2 text-gray-700 transition-colors duration-150 hover:bg-gray-100  focus:ring  focus:ring-gray-200  focus:ring-opacity-80 sm:w-auto">
                         회원가입
-                      </a>
+                      </span>
                     </Link>
                   </div>
                 </div>

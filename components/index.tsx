@@ -48,17 +48,15 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
         <nav className="container mx-auto flex flex-row flex-wrap items-center justify-between p-5">
           <div className="my-auto inline-flex">
             <Link href="/">
-              <a className="flex items-center font-medium text-gray-900">
-                <Image
-                  src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
-                  alt="Finda Logo"
-                  width={20}
-                  height={20}
-                />
-                <span className="ml-1 text-lg font-bold text-gray-900">
-                  findaoverflow
-                </span>
-              </a>
+              <Image
+                src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
+                alt="Finda Logo"
+                width={20}
+                height={20}
+              />
+              <span className="ml-1 text-lg font-bold text-gray-900">
+                findaoverflow
+              </span>
             </Link>
           </div>
           <button
@@ -106,10 +104,10 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
             {session && session.user?.id ? (
               <>
                 <Link href="/posts">
-                  <a className="mr-5 hover:text-gray-900">포스트 목록</a>
+                  <span className="mr-5 hover:text-gray-900">포스트 목록</span>
                 </Link>
                 <Link href="/boards">
-                  <a className="mr-5 hover:text-gray-900">이야기 목록</a>
+                  <span className="mr-5 hover:text-gray-900">이야기 목록</span>
                 </Link>
                 <button
                   className="mr-5 hover:text-gray-900"
@@ -127,10 +125,10 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
                   구글 로그인
                 </button>
                 <Link href="/users/login">
-                  <a className="mr-5 hover:text-gray-900">로그인</a>
+                  <span className="mr-5 hover:text-gray-900">로그인</span>
                 </Link>
                 <Link href="/users/register">
-                  <a className="mr-5 hover:text-gray-900">회원가입</a>
+                  <span className="mr-5 hover:text-gray-900">회원가입</span>
                 </Link>
               </>
             )}
@@ -150,12 +148,16 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
                 <>
                   <Link href="/posts">
                     <li className="w-full py-4 px-6">
-                      <a className="mr-5 hover:text-gray-900">포스트 목록</a>
+                      <span className="mr-5 hover:text-gray-900">
+                        포스트 목록
+                      </span>
                     </li>
                   </Link>
                   <Link href="/boards">
                     <li className="w-full py-4 px-6">
-                      <a className="mr-5 hover:text-gray-900">이야기 목록</a>
+                      <span className="mr-5 hover:text-gray-900">
+                        이야기 목록
+                      </span>
                     </li>
                   </Link>
 
@@ -176,12 +178,12 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
                   </button>
                   <Link href="/users/login">
                     <li className="w-full py-4 px-6">
-                      <a className="mr-5 hover:text-gray-900">로그인</a>
+                      <span className="mr-5 hover:text-gray-900">로그인</span>
                     </li>
                   </Link>
                   <Link href="/users/register">
                     <li className="w-full py-4 px-6">
-                      <a className="mr-5 hover:text-gray-900">회원가입</a>
+                      <span className="mr-5 hover:text-gray-900">회원가입</span>
                     </li>
                   </Link>
                 </>

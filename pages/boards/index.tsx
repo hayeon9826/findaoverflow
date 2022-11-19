@@ -54,7 +54,7 @@ function BoardsPage() {
                       {board?.content?.substring(0, 200)}
                     </p>
                     <Link href={`/boards/${board?.id}`}>
-                      <a className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-700">
+                      <span className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-700">
                         더보기
                         <svg
                           className="ml-2 h-4 w-4"
@@ -68,7 +68,7 @@ function BoardsPage() {
                           <path d="M5 12h14"></path>
                           <path d="M12 5l7 7-7 7"></path>
                         </svg>
-                      </a>
+                      </span>
                     </Link>
                   </div>
                 </div>
