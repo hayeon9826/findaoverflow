@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -14,21 +18,61 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "rootDirs": ["."],
+    "rootDirs": [
+      "."
+    ],
     "paths": {
-      "pages/*": ["./pages/*"],
-      "components/*": ["./components/*"],
-      "hooks/*": ["./hooks/*"],
-      "selectors/*": ["./selectors/*"],
-      "types/*": ["./types/*"],
-      "atoms/*": ["./atoms/*"],
-      "utils/*": ["./utils/*"],
-      "config/*": ["./config/*"],
-      "src/*": ["./src/*"],
-      "interface/*": ["./src/interface/*"],
-      "@apis/*": ["./pages/api/*"]
-    }
+      "pages/*": [
+        "./pages/*"
+      ],
+      "components/*": [
+        "./components/*"
+      ],
+      "hooks/*": [
+        "./hooks/*"
+      ],
+      "selectors/*": [
+        "./selectors/*"
+      ],
+      "types/*": [
+        "./types/*"
+      ],
+      "atoms/*": [
+        "./atoms/*"
+      ],
+      "utils/*": [
+        "./utils/*"
+      ],
+      "config/*": [
+        "./config/*"
+      ],
+      "src/*": [
+        "./src/*"
+      ],
+      "interface/*": [
+        "./src/interface/*"
+      ],
+      "@next-api/*": [
+        "./pages/api/*"
+      ],
+      "@apis/*": [
+        "./apis/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/index.js"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "utils/index.js",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

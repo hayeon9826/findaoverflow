@@ -1,3 +1,4 @@
+'use client';
 import { useCallback } from 'react';
 import { db } from 'config/firebase';
 import Link from 'next/link';
@@ -5,10 +6,8 @@ import { collection, orderBy, query } from 'firebase/firestore';
 import { useFirestoreQuery } from 'utils/index';
 import { BoardType } from 'config/interface';
 import { Layout } from 'components/index';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import * as dayjs from 'dayjs';
-import 'dayjs/locale/ko';
-dayjs.locale('ko');
 
 function BoardsPage() {
   const router = useRouter();
@@ -47,14 +46,14 @@ function BoardsPage() {
                     </h2>
                     <p className="text-xs leading-relaxed">
                       {dayjs
-                        .unix(board?.createdAt?.seconds)
+                        .unix(board?.createdAt?._seconds)
                         .format('YYYY-MM-DD HH:MM:ss')}
                     </p>
                     <p className="leading-relaxed">
                       {board?.content?.substring(0, 200)}
                     </p>
                     <Link href={`/boards/${board?.id}`}>
-                      <a className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-700">
+                      <span className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-700">
                         더보기
                         <svg
                           className="ml-2 h-4 w-4"
@@ -68,7 +67,7 @@ function BoardsPage() {
                           <path d="M5 12h14"></path>
                           <path d="M12 5l7 7-7 7"></path>
                         </svg>
-                      </a>
+                      </span>
                     </Link>
                   </div>
                 </div>

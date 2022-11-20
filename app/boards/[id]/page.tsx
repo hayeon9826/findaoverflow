@@ -1,35 +1,27 @@
-import { useState, useEffect, useCallback } from 'react';
-import { db } from 'config/firebase';
-import { useRouter } from 'next/router';
-import { getDoc, doc } from 'firebase/firestore';
-import { PostType } from 'config/interface';
-import * as dayjs from 'dayjs';
-import '@toast-ui/editor/dist/toastui-editor-viewer.css';
+'use client';
+
 import { Layout } from 'components/index';
-import dynamic from 'next/dynamic';
-import 'dayjs/locale/ko';
-dayjs.locale('ko');
+import { db } from 'config/firebase';
+import { BoardType } from 'config/interface';
+import * as dayjs from 'dayjs';
+import { doc, getDoc } from 'firebase/firestore';
+import { useCallback, useEffect, useState } from 'react';
 
-const NoSsrViewer = dynamic(() => import('components/TuiViewer'), {
-  ssr: false,
-});
+function BoardPage({ params }: { params: { id: string } }) {
+  const { id } = params;
+  const [board, setBoard] = useState<BoardType | null>(null);
 
-function PostPage() {
-  const router = useRouter();
-  const { id } = router.query;
-  const [post, setPost] = useState<PostType | null>(null);
-
-  const getPost = useCallback(async () => {
-    const docRef = doc(db, 'posts', `${id}`);
+  const getBoard = useCallback(async () => {
+    const docRef = doc(db, 'boards', `${id}`);
     const docSnap = await getDoc(docRef);
 
-    return docSnap.exists() ? (docSnap.data() as PostType) : null;
+    return docSnap.exists() ? (docSnap.data() as BoardType) : null;
   }, [db, id]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPost();
-      setPost(data);
+      const data = await getBoard();
+      setBoard(data);
     };
 
     if (id) {
@@ -42,25 +34,25 @@ function PostPage() {
       <section className="overflow-hidden text-gray-600">
         <div className="container mx-auto max-w-3xl py-24">
           <div className="-my-8 divide-y-2 divide-gray-100">
-            <div className="flex flex-wrap py-8 md:flex-nowrap" key={post?.id}>
+            <div className="flex flex-wrap py-8 md:flex-nowrap" key={board?.id}>
               <div className="md:grow">
                 <h2 className="mb-2 text-2xl font-medium text-gray-900">
-                  {post?.title}
+                  {board?.title}
                 </h2>
                 <p className="text-xs leading-relaxed">
                   {dayjs
-                    .unix(post?.createdAt?.seconds as number)
+                    .unix(board?.createdAt?._seconds as number)
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
-                <div className="mt-8">
-                  {post?.content && <NoSsrViewer content={post?.content} />}
-                </div>
+                <p className="mt-4 whitespace-pre-wrap leading-relaxed">
+                  {board?.content}
+                </p>
               </div>
             </div>
           </div>
           <hr className="my-8" />
           {/* comment section */}
-          <section>
+          <section className="not-format">
             <div className="mb-6 flex items-center justify-between">
               <h2 className="text-lg font-bold text-gray-900 lg:text-2xl">
                 Discussion (20)
@@ -466,4 +458,4 @@ function PostPage() {
   );
 }
 
-export default PostPage;
+export default BoardPage;

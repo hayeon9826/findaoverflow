@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface Timestamp {
-  seconds: number;
-  nanoseconds: number;
+  _seconds: number;
+  _nanoseconds: number;
 }
 
 export interface BoardType {

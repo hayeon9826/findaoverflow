@@ -1,6 +1,8 @@
+'use client';
+
 import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { db } from 'config/firebase';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
@@ -205,9 +207,9 @@ function RegisterPage() {
             <div className="mt-6 text-sm text-gray-700">
               Already have an account?
               <Link href="/users/login">
-                <a className="border-blue text-blue ml-2 border-b no-underline">
+                <span className="border-blue text-blue ml-2 border-b no-underline">
                   Log in
-                </a>
+                </span>
               </Link>
             </div>
           </div>
