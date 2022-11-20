@@ -1,0 +1,151 @@
+'use client';
+
+import { getApiAddress } from 'config/api';
+import { PostType } from 'config/interface';
+import Link from 'next/link';
+import { useEffect } from 'react';
+import { useInfiniteQuery } from 'react-query';
+import { apiInstance } from 'utils/axios';
+import { useIntersection } from 'utils/use-intersection';
+
+interface Props {
+  posts: PostType[];
+}
+function Posts({ posts }: Props) {
+  const { data, isFetchingNextPage, fetchNextPage, hasNextPage } =
+    useInfiniteQuery(
+      'posts',
+      async ({ pageParam = 0 }): Promise<{ posts: PostType[] }> => {
+        return apiInstance
+          .get(getApiAddress('POSTS'), {
+            params: { count: 5, ts: pageParam > 0 ? pageParam : null },
+          })
+          .then((res) => res.data);
+      },
+      {
+        getNextPageParam: (lastPage) =>
+          lastPage.posts.length > 0
+            ? lastPage.posts[lastPage.posts.length - 1].createdAt._seconds
+            : undefined,
+        staleTime: 60 * 1000,
+        initialData: {
+          pageParams: [0],
+          pages: [{ posts }],
+        },
+      },
+    );
+  const [setIntersectionRef, isVisible, resetVisible] = useIntersection({
+    rootMargin: '200px',
+  });
+
+  useEffect(() => {
+    if (isVisible) {
+      fetchNextPage().then(() => {
+        resetVisible();
+      });
+    }
+  }, [isVisible]);
+
+  if (data && data.pages?.length === 0) {
+    return (
+      <>
+        <div className="mt-20 flex w-full flex-wrap rounded border p-8 py-8 md:flex-nowrap">
+          <div className="md:grow">
+            <h2 className="mb-2 text-xl font-medium text-gray-900">
+              게시글이 없습니다.
+            </h2>
+            <p className="leading-relaxed">첫번째 게시글을 작성해주세요!</p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <div className="-my-8 flex flex-wrap">
+        {data?.pages?.map(({ posts }) =>
+          posts.map((post: PostType) => (
+            <div key={post.id} className="p-4 md:w-1/2">
+              <div className="h-full overflow-hidden rounded-lg border-2 border-gray-200">
+                <img
+                  className="w-full object-cover object-center md:h-36 lg:h-48"
+                  src="https://dummyimage.com/720x400"
+                  alt="blog"
+                />
+                <div className="p-6">
+                  <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400">
+                    {post?.category || 'CATEGORY'}
+                  </h2>
+                  <h1 className="mb-3 h-8 text-lg font-medium text-gray-900">
+                    {post.title.substring(0, 33) || '제목이 없습니다.'}
+                  </h1>
+                  <p className="mb-3 h-20 overflow-hidden text-clip leading-relaxed">
+                    {post?.content?.substring(0, 100)}
+                  </p>
+                  <div className="flex flex-wrap items-center ">
+                    <Link href={`/posts/${post?.id}`}>
+                      <span className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
+                        더보기
+                        <svg
+                          className="ml-2 h-4 w-4"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M5 12h14"></path>
+                          <path d="M12 5l7 7-7 7"></path>
+                        </svg>
+                      </span>
+                    </Link>
+                    <span className="mr-3 ml-auto inline-flex items-center border-r-2 border-gray-200 py-1 pr-3 text-sm leading-none text-gray-400 md:ml-0 lg:ml-auto">
+                      <svg
+                        className="mr-1 h-4 w-4"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                      1.2K
+                    </span>
+                    <span className="inline-flex items-center text-sm leading-none text-gray-400">
+                      <svg
+                        className="mr-1 h-4 w-4"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                      </svg>
+                      6
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )),
+        )}
+      </div>
+      <div ref={setIntersectionRef}>
+        {isFetchingNextPage
+          ? '불러오는중...'
+          : hasNextPage
+          ? '불러왔습니다.'
+          : '마지막입니다.'}
+      </div>
+    </>
+  );
+}
+
+export default Posts;
