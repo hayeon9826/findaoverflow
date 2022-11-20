@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { db } from 'config/firebase';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
