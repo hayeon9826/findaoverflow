@@ -8,7 +8,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useState } from 'react';
 
-const NoSsrViewer = dynamic(() => import('components/TuiViewer'), {
+const NoSsrViewer = dynamic(() => import('components/JoditEditor.js'), {
   ssr: false,
 });
 
