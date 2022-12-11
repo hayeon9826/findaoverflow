@@ -1,6 +1,5 @@
 'use client';
 
-import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { Layout } from 'components/index';
 import { db } from 'config/firebase';
 import { PostType } from 'config/interface';
