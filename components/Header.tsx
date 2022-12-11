@@ -1,54 +1,19 @@
 'use client';
 
-import { HeaderType, LayoutType } from 'config/interface';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-export const Footer = () => {
-  return (
-    <footer className="container mx-auto flex flex-col flex-wrap items-center justify-between bg-white p-6 sm:flex-row md:flex-row">
-      <a
-        href="https://finda.co.kr"
-        target="_blank"
-        className="mb-2 flex items-center font-medium text-gray-900 md:mb-0"
-        rel="noreferrer"
-      >
-        <Image
-          src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
-          alt="Finda Logo"
-          width={18}
-          height={18}
-        />
-        <span className="ml-1 text-sm font-semibold text-gray-900">
-          findaoverflow
-        </span>
-      </a>
-      <p className="text-xs text-gray-400 lg:text-sm">
-        © Copyright 2022. All Rights Reserved.
-      </p>
-    </footer>
-  );
-};
-
-export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
+const Header = () => {
   const { data: session, status } = useSession();
   const [open, setOpen] = useState<boolean>(false);
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <link
-          rel="icon"
-          href="https://cdn.finda.co.kr/images/favicon/finda_192.png"
-        />
-      </Head>
-      <header className="sticky top-0 text-gray-600 backdrop-blur-lg">
+      <div className="sticky top-0 text-gray-600 backdrop-blur-lg">
         <nav className="container mx-auto flex flex-row flex-wrap items-center justify-between p-5">
-          <div className="my-auto inline-flex">
+          <div className="my-auto inline-flex items-center">
             <Link href="/">
               <Image
                 src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
@@ -56,10 +21,10 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
                 width={20}
                 height={20}
               />
-              <span className="ml-1 text-lg font-bold text-gray-900">
-                findaoverflow
-              </span>
             </Link>
+            <span className="ml-2 text-lg font-bold text-gray-900">
+              findaoverflow
+            </span>
           </div>
           <button
             data-collapse-toggle="navbar-default"
@@ -143,9 +108,7 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
         </nav>
         {open && (
           <div
-            className={`absolute block w-full flex-wrap items-center justify-center bg-white text-base transition duration-500 ease-in-out md:ml-auto md:hidden md:w-auto lg:hidden ${
-              open ? 'translate-y-100' : 'translate-y-0'
-            }`}
+            className={`z-100 absolute block w-full flex-wrap items-center justify-center bg-white text-base transition duration-500 ease-in-out md:ml-auto md:hidden md:w-auto lg:hidden ${open} ? 'translate-y-100 : 'translate-y-0`}
           >
             <ul className="w-full text-sm font-normal text-gray-500">
               {session && session.user?.name ? (
@@ -202,29 +165,9 @@ export const Header = ({ title = '핀다오버플로우' }: HeaderType) => {
             </ul>
           </div>
         )}
-      </header>
+      </div>
     </>
   );
 };
 
-export const Layout = ({
-  noNav = false,
-  noFooter = false,
-  title = '핀다오버플로우',
-  className,
-  children,
-}: LayoutType) => {
-  return (
-    <>
-      {/* {!noNav && <Header title={title} />} */}
-      <div
-        className={
-          className || `flex min-h-screen flex-col items-center justify-center`
-        }
-      >
-        {children}
-      </div>
-      {!noFooter && <Footer />}
-    </>
-  );
-};
+export default Header;

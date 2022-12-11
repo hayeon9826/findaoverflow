@@ -1,4 +1,6 @@
-import { useRouter } from 'next/router';
+'use client';
+
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { collection, addDoc } from 'firebase/firestore';

@@ -1,21 +1,18 @@
+'use client';
 import { useState, useEffect, useCallback } from 'react';
 import { db } from 'config/firebase';
-import { useRouter } from 'next/router';
 import { getDoc, doc } from 'firebase/firestore';
 import { PostType } from 'config/interface';
 import * as dayjs from 'dayjs';
 import { Layout } from 'components/index';
 import dynamic from 'next/dynamic';
-import 'dayjs/locale/ko';
-dayjs.locale('ko');
 
 const NoSsrViewer = dynamic(() => import('components/JoditEditor.js'), {
   ssr: false,
 });
 
-function PostPage() {
-  const router = useRouter();
-  const { id } = router.query;
+function PostPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const [post, setPost] = useState<PostType | null>(null);
 
   const getPost = useCallback(async () => {
@@ -48,7 +45,7 @@ function PostPage() {
                 </h2>
                 <p className="text-xs leading-relaxed">
                   {dayjs
-                    .unix(post?.createdAt?.seconds as number)
+                    .unix(post?.createdAt?._seconds as number)
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
                 <div className="mt-8">

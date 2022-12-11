@@ -1,16 +1,14 @@
-import { useState, useEffect, useCallback } from 'react';
+'use client';
+
+import { Layout } from 'components/index';
 import { db } from 'config/firebase';
-import { useRouter } from 'next/router';
-import { getDoc, doc } from 'firebase/firestore';
 import { BoardType } from 'config/interface';
 import * as dayjs from 'dayjs';
-import { Layout } from 'components/index';
-import 'dayjs/locale/ko';
-dayjs.locale('ko');
+import { doc, getDoc } from 'firebase/firestore';
+import { useCallback, useEffect, useState } from 'react';
 
-function BoardPage() {
-  const router = useRouter();
-  const { id } = router.query;
+function BoardPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const [board, setBoard] = useState<BoardType | null>(null);
 
   const getBoard = useCallback(async () => {
@@ -43,7 +41,7 @@ function BoardPage() {
                 </h2>
                 <p className="text-xs leading-relaxed">
                   {dayjs
-                    .unix(board?.createdAt?.seconds as number)
+                    .unix(board?.createdAt?._seconds as number)
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
                 <p className="mt-4 whitespace-pre-wrap leading-relaxed">
