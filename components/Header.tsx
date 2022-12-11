@@ -13,7 +13,7 @@ const Header = () => {
     <>
       <div className="sticky top-0 text-gray-600 backdrop-blur-lg">
         <nav className="container mx-auto flex flex-row flex-wrap items-center justify-between p-5">
-          <div className="my-auto inline-flex">
+          <div className="my-auto inline-flex items-center">
             <Link href="/">
               <Image
                 src="https://cdn.finda.co.kr/images/favicon/finda_192.png"
@@ -21,10 +21,10 @@ const Header = () => {
                 width={20}
                 height={20}
               />
-              <span className="ml-1 text-lg font-bold text-gray-900">
-                findaoverflow
-              </span>
             </Link>
+            <span className="ml-2 text-lg font-bold text-gray-900">
+              findaoverflow
+            </span>
           </div>
           <button
             data-collapse-toggle="navbar-default"

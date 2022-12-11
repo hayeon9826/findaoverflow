@@ -4,12 +4,14 @@ import { BoardType, PostType } from 'config/interface';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 import { collection, limit, orderBy, query } from 'firebase/firestore';
+import type { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import React from 'react';
 import { useFirestoreQuery } from 'utils/index';
 
-function MainPage() {
+dayjs.locale('ko');
+
+const Home: NextPage = () => {
   const { data: session } = useSession();
   const boards = useFirestoreQuery(
     query(collection(db, 'boards'), orderBy('createdAt', 'desc'), limit(5)),
@@ -33,13 +35,6 @@ function MainPage() {
                 </Link>
               )}
             </h2>
-            <button
-              onClick={async () => {
-                fetch('/api/posts').then((res) => console.log(res.json()));
-              }}
-            >
-              Test!!
-            </button>
             <div className="container mx-auto mt-12 pb-24 text-left">
               <div className="-my-8 flex flex-wrap">
                 {posts && posts.length > 0 ? (
@@ -55,12 +50,14 @@ function MainPage() {
                           <h2 className="mb-1 text-xs font-medium tracking-widest text-gray-400">
                             {post?.category || 'CATEGORY'}
                           </h2>
-                          <h1 className="mb-3 h-8 text-lg font-medium text-gray-900">
+                          <h1 className="mb-3 h-8 text-lg font-medium text-gray-900 truncate overflow-hidden">
                             {post.title.substring(0, 33) || '제목이 없습니다.'}
                           </h1>
-                          <p className="mb-3 h-20 overflow-hidden text-clip leading-relaxed">
-                            {post?.content?.substring(0, 100)}
-                          </p>
+                          <div className="mb-3 h-20 overflow-hidden text-clip leading-relaxed">
+                            {post?.content
+                              .replace(/<[^>]+>/g, '')
+                              .substring(0, 100)}
+                          </div>
                           <div className="flex flex-wrap items-center ">
                             <Link href={`/posts/${post?.id}`}>
                               <span className="inline-flex items-center text-blue-600 md:mb-2 lg:mb-0">
@@ -154,9 +151,10 @@ function MainPage() {
                           {board?.title?.substring(0, 100)}
                         </h2>
                         <p className="text-xs leading-relaxed">
-                          {dayjs
-                            .unix(board?.createdAt?._seconds)
-                            .format('YYYY-MM-DD HH:MM:ss')}
+                          {board?.createdAt?._seconds &&
+                            dayjs
+                              .unix(board?.createdAt?._seconds)
+                              .format('YYYY-MM-DD HH:MM:ss')}
                         </p>
                         <p className="leading-relaxed">
                           {board?.content?.substring(0, 200)}
@@ -231,6 +229,6 @@ function MainPage() {
       )}
     </main>
   );
-}
+};
 
-export default MainPage;
+export default Home;

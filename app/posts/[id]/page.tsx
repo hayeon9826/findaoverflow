@@ -1,12 +1,11 @@
 'use client';
-
-import { Layout } from 'components/index';
+import { useState, useEffect, useCallback } from 'react';
 import { db } from 'config/firebase';
+import { getDoc, doc } from 'firebase/firestore';
 import { PostType } from 'config/interface';
 import * as dayjs from 'dayjs';
-import { doc, getDoc } from 'firebase/firestore';
+import { Layout } from 'components/index';
 import dynamic from 'next/dynamic';
-import { useCallback, useEffect, useState } from 'react';
 
 const NoSsrViewer = dynamic(() => import('components/JoditEditor.js'), {
   ssr: false,
@@ -50,7 +49,7 @@ function PostPage({ params }: { params: { id: string } }) {
                     .format('YYYY-MM-DD HH:MM:ss')}
                 </p>
                 <div className="mt-8">
-                  {post?.content && <NoSsrViewer content={post?.content} />}
+                  <NoSsrViewer body={post?.content} setMarkDown={null} />
                 </div>
               </div>
             </div>
@@ -79,7 +78,7 @@ function PostPage({ params }: { params: { id: string } }) {
               <div className="flex flex-row-reverse">
                 <button
                   type="submit"
-                  className="focus:ring-primary-200 hover:bg-primary-800 inline-flex items-center rounded-lg bg-blue-600 py-2.5 px-4 text-center text-xs font-medium text-white focus:ring-4"
+                  className="inline-flex items-center rounded-lg bg-blue-600 py-2.5 px-4 text-center text-xs font-medium text-white focus:ring-4"
                 >
                   board comment
                 </button>

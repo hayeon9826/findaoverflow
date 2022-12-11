@@ -14,7 +14,8 @@ export const Layout = ({
       <Header />
       <div
         className={
-          className || `flex min-h-screen flex-col items-center justify-center`
+          className ||
+          `flex min-h-screen flex-col items-center justify-center w-screen`
         }
       >
         {children}
